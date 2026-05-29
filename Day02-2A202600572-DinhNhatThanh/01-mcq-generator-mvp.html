@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVP MCQ Generator - Công cụ soạn câu hỏi cộng tác AI cho Giảng Viên</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Premium Styles CSS -->
+    <style>
+        /* Modern Premium Palette Variables */
+        :root {
+            --bg-dark: #090D16;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-hover: rgba(31, 41, 55, 0.85);
+            --primary: #38BDF8;
+            --primary-glow: rgba(56, 189, 248, 0.2);
+            --secondary: #06D6A0;
+            --secondary-glow: rgba(6, 214, 160, 0.2);
+            --accent: #F43F5E;
+            --warning: #F59E0B;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(56, 189, 248, 0.2);
+            --text-main: #F9FAFB;
+            --text-muted: #9CA3AF;
+            --text-dark: #4B5563;
+            --transition-speed: 0.3s;
+            --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        /* Basic Resets & Scrollbars */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Glowing Orbs Background Animation */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            animation: float 30s infinite ease-in-out alternate;
+        }
+
+        .orb-1 {
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            top: -20%;
+            left: -10%;
+        }
+
+        .orb-2 {
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            width: 550px;
+            height: 550px;
+            bottom: -20%;
+            right: -10%;
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, -50px) scale(1.1); }
+            100% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        /* Premium Application Header */
+        header {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1.25rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: var(--bg-dark);
+            font-size: 1.25rem;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
+        }
+
+        .logo-text h1 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #FFFFFF, #E5E7EB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-header {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-header:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Top Progress status bar */
+        .status-strip {
+            height: 3px;
+            width: 100%;
+            background: var(--border-glass);
+            position: relative;
+        }
+
+        .status-strip-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Main Workspace Split layout */
+        main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            height: calc(100vh - 74px - 3px);
+            overflow: hidden;
+        }
+
+        /* Left Panel - Inputs area */
+        .sidebar {
+            border-right: 1px solid var(--border-glass);
+            background: rgba(13, 19, 33, 0.4);
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        /* Right Panel - Core workspace */
+        .content-area {
+            padding: 2rem;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 2rem;
+            background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.02), transparent 60%);
+        }
+
+        /* Glass Cards styles */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color var(--transition-speed) ease;
+        }
+
+        .glass-card:focus-within {
+            border-color: rgba(56, 189, 248, 0.25);
+        }
+
+        .card-header-title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 8px;
+        }
+
+        .card-header-title svg {
+            color: var(--primary);
+        }
+
+        /* Input Controls Styles */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 1.25rem;
+        }
+
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .input-lbl {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .input-lbl span.accent {
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .custom-select, .custom-textarea, .custom-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            padding: 10px 12px;
+            outline: none;
+            transition: border-color var(--transition-speed);
+        }
+
+        .custom-select:focus, .custom-textarea:focus, .custom-input:focus {
+            border-color: var(--primary);
+        }
+
+        .custom-textarea {
+            resize: vertical;
+            min-height: 150px;
+            line-height: 1.5;
+            font-size: 0.8rem;
+        }
+
+        /* Model Configuration Modal styling */
+        .key-input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 8px;
+        }
+
+        .custom-input.masked {
+            font-family: var(--font-mono);
+            letter-spacing: 0.1em;
+        }
+
+        .btn-save-key {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 0 12px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-save-key:hover {
+            background: rgba(6, 214, 160, 0.1);
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        /* Action Buttons */
+        .btn-generate {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            color: var(--bg-dark);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-generate:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--bg-dark);
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Preset pills styling */
+        .preset-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.25rem;
+        }
+
+        .preset-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 15px;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .preset-pill:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-main);
+        }
+
+        .preset-pill.active {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ---------------------------------------------------- */
+        /* RIGHT PANEL: MCQ EDITOR & PREVIEW                     */
+        /* ---------------------------------------------------- */
+        
+        .board-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .board-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .board-stats {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Editor Card Style */
+        .editor-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: card-appear 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes card-appear {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 8px;
+            margin-bottom: 4px;
+        }
+
+        .card-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid var(--border-glow);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-card-action {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-card-action:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--accent);
+        }
+
+        .btn-card-action.move:hover {
+            color: var(--primary);
+        }
+
+        /* Option rows styling */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-row {
+            display: grid;
+            grid-template-columns: 32px 28px 1fr;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .opt-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Custom radio correct key selector */
+        .opt-radio {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-glass);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .opt-radio:checked {
+            border-color: var(--secondary);
+            background: var(--secondary);
+            box-shadow: 0 0 8px var(--secondary-glow);
+        }
+
+        .opt-radio:checked::before {
+            content: "✓";
+            color: var(--bg-dark);
+            font-size: 0.65rem;
+            font-weight: 800;
+        }
+
+        .opt-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            padding: 8px 12px;
+            outline: none;
+            transition: border-color var(--transition-speed);
+        }
+
+        .opt-input:focus {
+            border-color: var(--primary);
+        }
+
+        .opt-input.correct {
+            border-color: rgba(6, 214, 160, 0.35);
+            background: rgba(6, 214, 160, 0.02);
+        }
+
+        /* ---------------------------------------------------- */
+        /* COLLABORATIVE RE-ACT INTERACTION PER CARD           */
+        /* ---------------------------------------------------- */
+        
+        .card-refine-box {
+            border-top: 1px solid var(--border-glass);
+            padding-top: 12px;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-history-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .bubble {
+            font-size: 0.8rem;
+            line-height: 1.45;
+            padding: 6px 10px;
+            border-radius: 8px;
+            max-width: 90%;
+        }
+
+        .bubble.gv {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            align-self: flex-start;
+            border-top-left-radius: 1px;
+            color: var(--text-main);
+        }
+
+        .bubble.ai-reason {
+            background: rgba(56, 189, 248, 0.04);
+            border: 1px dashed rgba(56, 189, 248, 0.25);
+            align-self: flex-end;
+            border-top-right-radius: 1px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+        }
+
+        .bubble.ai-reason::before {
+            content: "💡 AI REASON (LẬP LUẬN):";
+            display: block;
+            font-weight: 700;
+            font-size: 0.65rem;
+            margin-bottom: 2px;
+        }
+
+        .refine-input-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .refine-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            outline: none;
+            transition: all var(--transition-speed);
+        }
+
+        .refine-input:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-refine {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            color: var(--bg-dark);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.2);
+            flex-shrink: 0;
+        }
+
+        .btn-refine:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.35);
+        }
+
+        .btn-refine:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ---------------------------------------------------- */
+        /* RIGHTMOST PANEL: LIVE EXPORT PREVIEW                 */
+        /* ---------------------------------------------------- */
+        
+        .export-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .export-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            padding: 3px;
+            border-radius: 10px;
+            gap: 4px;
+        }
+
+        .export-tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+        }
+
+        .export-tab-btn.active {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--primary);
+            border: 1px solid var(--border-glow);
+        }
+
+        .code-container {
+            flex: 1;
+            background: #050810;
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 1.5;
+            color: var(--secondary);
+            overflow: auto;
+            max-height: 400px;
+            white-space: pre;
+            position: relative;
+        }
+
+        /* Status badges */
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            background: rgba(6, 214, 160, 0.08);
+            border: 1px solid rgba(6, 214, 160, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .btn-action-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-export {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-export:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-export.primary-action {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(6, 214, 160, 0.1) 100%);
+            border-color: var(--primary);
+        }
+
+        /* Toast notification system */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(17, 24, 39, 0.9);
+            border: 1px solid var(--border-glow);
+            color: var(--text-main);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Card empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .empty-state svg {
+            width: 48px;
+            height: 48px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        /* Card list layout wrapper */
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .btn-add-question {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border-glass);
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-add-question:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.02);
+        }
+
+        /* Responsive grid adjustments */
+        @media (max-width: 1200px) {
+            main {
+                grid-template-columns: 1fr;
+                height: auto;
+                overflow: visible;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-glass);
+                overflow-y: visible;
+            }
+            .content-area {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+                overflow-y: visible;
+            }
+            .export-sidebar {
+                border-top: 1px solid var(--border-glass);
+                padding-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient glowing backgrounds -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <!-- App Header -->
+    <header>
+        <div class="logo-group">
+            <div class="logo-icon">Q</div>
+            <div class="logo-text">
+                <h1>MCQ Generator</h1>
+                <span>Công cụ cộng tác soạn đề AI (MVP Version)</span>
+            </div>
+        </div>
+
+        <div class="header-links">
+            <a href="01-pitch-deck.html" class="btn-header">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                Xem Pitch Deck Slide
+            </a>
+        </div>
+    </header>
+
+    <!-- Header progress filled line -->
+    <div class="status-strip">
+        <div class="status-strip-fill" id="status-fill"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- LEFT SIDEBAR: Inputs & API Keys config -->
+        <section class="sidebar">
+            
+            <!-- Card 1: API Configuration -->
+            <div class="glass-card">
+                <div class="card-header-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Cấu Hình API Key
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-lbl">Nhà cung cấp AI:</label>
+                    <select class="custom-select" id="api-provider" onchange="switchApiProvider()">
+                        <option value="mock">Dùng thử Mô Phỏng (Mock Mode)</option>
+                        <option value="gemini">Google Gemini (Active API)</option>
+                        <option value="openai">OpenAI (Active API)</option>
+                    </select>
+                </div>
+
+                <div class="input-group" id="api-model-group" style="display: none;">
+                    <label class="input-lbl">Mô hình (Model):</label>
+                    <select class="custom-select" id="api-model">
+                        <!-- Dynamic options based on provider -->
+                    </select>
+                </div>
+
+                <div class="input-group" id="api-key-group" style="display: none;">
+                    <label class="input-lbl">
+                        <span>API Key của bạn:</span>
+                        <span class="accent" id="key-saved-status">Chưa lưu</span>
+                    </label>
+                    <div class="key-input-wrapper">
+                        <input type="password" class="custom-input masked" id="api-key" placeholder="Nhập key của bạn...">
+                        <button class="btn-save-key" onclick="saveApiKey()">Lưu Key</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Lecture Content Input -->
+            <div class="glass-card" style="flex: 1; display: flex; flex-direction: column;">
+                <div class="card-header-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Nội Dung Bài Giảng
+                </div>
+
+                <div class="input-group">
+                    <label class="input-lbl">Bài giảng mẫu (Presets):</label>
+                    <div class="preset-container">
+                        <div class="preset-pill active" id="preset-newton" onclick="loadPreset('newton')">Định luật Newton II</div>
+                        <div class="preset-pill" id="preset-stack" onclick="loadPreset('stack')">Cấu trúc Ngăn xếp (Stack)</div>
+                        <div class="preset-pill" id="preset-economics" onclick="loadPreset('economics')">Cung & Cầu (Economics)</div>
+                    </div>
+                </div>
+
+                <div class="input-group" style="flex: 1; display: flex; flex-direction: column;">
+                    <label class="input-lbl">Dán văn bản slide bài giảng:</label>
+                    <textarea class="custom-textarea" id="slide-text" style="flex: 1;" placeholder="Dán nội dung chữ của các slide bài giảng hoặc tài liệu vào đây..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-lbl">Cấp độ Bloom mong muốn:</label>
+                    <select class="custom-select" id="bloom-level">
+                        <option value="Nhận biết / Thông hiểu">Nhận biết & Thông hiểu (Bloom Level 1 & 2)</option>
+                        <option value="Vận dụng (Tính toán/Áp dụng)">Vận dụng (Bloom Level 3 - Cần tư duy/Tính toán)</option>
+                        <option value="Hỗn hợp phù hợp">Hỗn hợp phân loại học sinh (Bloom 1, 2, 3)</option>
+                    </select>
+                </div>
+
+                <button class="btn-generate" id="btn-generate-mcq" onclick="generateMCQs()">
+                    <span class="spinner" id="gen-spinner"></span>
+                    <span id="gen-text">Phân tích & Soạn Nháp MCQ Bằng AI</span>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- RIGHT WORKSPACE: Interactive editor and exports preview -->
+        <section class="content-area">
+            
+            <!-- Left Side: Interactive Board -->
+            <div class="board-container">
+                <div class="board-title">
+                    <span>Bảng Biên Tập Đề Thi (HITL Mode)</span>
+                    <span class="board-stats" id="board-count">0 Câu hỏi</span>
+                </div>
+
+                <!-- Empty State -->
+                <div class="glass-card empty-state" id="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <h5>Bảng chưa có câu hỏi nào</h5>
+                    <p>Hãy dán văn bản slide và bấm nút "Soạn Nháp MCQ" ở cột trái hoặc tải bài giảng mẫu để bắt đầu cộng tác với AI!</p>
+                </div>
+
+                <!-- Question Cards Board -->
+                <div class="list-container" id="cards-board" style="display: none;">
+                    <!-- Question cards generated here dynamically -->
+                </div>
+
+                <!-- Add new manual question -->
+                <button class="btn-add-question" id="btn-add-q" style="display: none;" onclick="addNewQuestion()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Thêm một câu hỏi trống mới
+                </button>
+            </div>
+
+            <!-- Right Side: Real-time Export Panel -->
+            <div class="export-sidebar">
+                <div class="glass-card">
+                    <div class="card-header-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Xuất File Chuẩn LMS
+                    </div>
+
+                    <div class="badge-status">
+                        <span class="badge-dot"></span>
+                        <span>0% Lỗi Định Dạng - Sẵn Sàng</span>
+                    </div>
+
+                    <div class="export-tabs">
+                        <button class="export-tab-btn active" id="tab-gift-btn" onclick="setExportFormat('gift')">Mã GIFT Format</button>
+                        <button class="export-tab-btn" id="tab-aiken-btn" onclick="setExportFormat('aiken')">Mã Aiken Format</button>
+                    </div>
+
+                    <div class="code-container" id="export-code-preview">
+                        <!-- Code outputs here -->
+                    </div>
+
+                    <div class="btn-action-group" style="margin-top: 1rem;">
+                        <button class="btn-export primary-action" onclick="copyToClipboard()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Sao chép toàn bộ mã
+                        </button>
+                        
+                        <button class="btn-export" onclick="downloadFile()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Tải file .txt xuất LMS
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Feedback Toast -->
+    <div class="toast" id="feedback-toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--secondary);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span id="toast-message">Đã sao chép vào Clipboard!</span>
+    </div>
+
+    <!-- Core App Logic Javascript -->
+    <script>
+        
+        // Dynamic academic slides presets (Vietnam languages)
+        const slidePresets = {
+            newton: `ĐỊNH LUẬT II NEWTON - CHƯƠNG 2: ĐỘNG LỰC HỌC CHẤT ĐIỂM
+- Newton định nghĩa: Gia tốc của một vật tỉ lệ thuận với lực tác dụng vào vật và tỉ lệ nghịch với khối lượng của vật.
+- Công thức vectơ: a = F / m  ==> F = m * a
+- Hướng của gia tốc luôn trùng với hướng của lực kéo tác dụng.
+- Trường hợp có nhiều lực tác dụng đồng thời: F ở đây là Hợp lực của tất cả các lực tác dụng lên vật (F = F1 + F2 + F3 + ...).
+- Ứng dụng quan trọng: Nếu bỏ qua ma sát trên mặt phẳng nằm ngang, quãng đường đi được sau thời gian t là s = 0.5 * a * t^2. 
+- Học sinh thường sai lầm: Quên chia cho khối lượng m, hoặc nhầm lẫn giữa công thức tính quãng đường s và vận tốc v = a * t.`,
+            
+            stack: `CẤU TRÚC DỮ LIỆU NGĂN XẾP (STACK DATA STRUCTURE)
+- Khái niệm: Stack là một cấu trúc dữ liệu dạng tuyến tính (linear), hoạt động theo nguyên lý LIFO (Last In, First Out - Vào sau, Ra trước).
+- Các thao tác cơ bản:
+  1. Push: Thêm một phần tử vào đỉnh (top) của Stack. Độ phức tạp O(1).
+  2. Pop: Xóa và trả về phần tử nằm ở đỉnh Stack. Độ phức tạp O(1).
+  3. Peek/Top: Xem phần tử ở đỉnh Stack mà không xóa nó. Độ phức tạp O(1).
+  4. IsEmpty: Kiểm tra Stack có rỗng hay không.
+- Ứng dụng thực tế:
+  * Quản lý bộ nhớ Call Stack trong Đệ quy (Recursion) của hệ điều hành.
+  * Tính năng Hoàn tác/Làm lại (Undo/Redo) trong các trình soạn thảo.
+  * Phân tích cú pháp biểu thức toán học (Chuyển đổi tiền tố, trung tố, hậu tố).
+- Hiện tượng lỗi tràn Stack (Stack Overflow): Xảy ra khi bộ nhớ Call Stack bị đầy, chủ yếu do đệ quy vô hạn (infinite recursion) không có điều kiện dừng.`,
+            
+            economics: `NGUYÊN LÝ CUNG - CẦU & CÂN BẰNG THỊ TRƯỜNG (MICROECONOMICS)
+- Quy luật Cầu (Law of Demand): Khi các yếu tố khác không đổi, giá (P) của một hàng hóa tăng lên sẽ làm lượng cầu (Qd) hàng hóa đó giảm xuống. Đường cầu dốc xuống từ trái sang phải.
+- Quy luật Cung (Law of Supply): Khi các yếu tố khác không đổi, giá (P) tăng lên sẽ làm lượng cung (Qs) tăng lên. Đường cung dốc lên từ trái sang phải.
+- Cân bằng thị trường (Market Equilibrium): Đạt được tại giao điểm của đường cung và đường cầu (Qd = Qs). Tại đây, mức giá được gọi là giá cân bằng (Pe) và lượng giao dịch gọi là lượng cân bằng (Qe).
+- Hiện tượng dư thừa (Surplus): Xảy ra khi giá thực tế cao hơn giá cân bằng (Qs > Qd), áp lực thị trường sẽ làm giá giảm xuống.
+- Hiện tượng thiếu hụt (Shortage): Xảy ra khi giá thực tế thấp hơn giá cân bằng (Qd > Qs), áp lực thị trường sẽ làm giá tăng lên.`
+        };
+
+        // Standard high-quality mock questions (for zero-API-key instant testing!)
+        const mockQuestionsData = {
+            newton: [
+                {
+                    question: "Một vật có khối lượng m chịu tác dụng của lực kéo F thu được gia tốc a. Nếu lực tác dụng tăng lên 2 lần và khối lượng vật giảm đi 2 lần thì gia tốc của vật thay đổi như thế nào?",
+                    options: ["Giảm đi 4 lần", "Tăng lên 2 lần", "Tăng lên 4 lần", "Không thay đổi"],
+                    answerIndex: 2,
+                    rationale: "a = F/m. Lực kéo F' = 2F, khối lượng m' = m/2. Suy ra gia tốc mới a' = F'/m' = (2F)/(m/2) = 4 * (F/m) = 4a. Gia tốc tăng lên 4 lần.",
+                    bloomLevel: "Thông hiểu"
+                },
+                {
+                    question: "Một vật khối lượng 2 kg đang đứng yên chịu tác dụng của lực kéo F = 8 N theo phương nằm ngang. Bỏ qua mọi lực cản ma sát. Sau 3 giây kể từ khi bắt đầu tác dụng lực, vật đi được quãng đường bằng bao nhiêu?",
+                    options: ["12 m", "36 m", "6 m", "18 m"],
+                    answerIndex: 3,
+                    rationale: "Gia tốc a = F/m = 8/2 = 4 m/s2. Quãng đường s = 0.5 * a * t^2 = 0.5 * 4 * 3^2 = 18 m. Các bẫy: A nhầm v = a * t, B quên nhân 0.5.",
+                    bloomLevel: "Vận dụng"
+                },
+                {
+                    question: "Khi có nhiều lực đồng thời tác dụng vào một chất điểm, hợp lực F trong công thức định luật II Newton (F = m.a) được tính như thế nào?",
+                    options: ["F bằng lực kéo lớn nhất tác dụng lên vật", "F là tổng đại số giá trị các lực", "F là tổng vectơ của tất cả các lực tác dụng lên vật", "F bằng tích của khối lượng và gia tốc rơi tự do"],
+                    answerIndex: 2,
+                    rationale: "Định luật II Newton phát biểu rằng gia tốc tỉ lệ thuận với HỢP LỰC tác dụng. Về mặt toán học, lực F trong công thức là tổng vectơ của tất cả các lực thành phần.",
+                    bloomLevel: "Nhận biết"
+                }
+            ],
+            stack: [
+                {
+                    question: "Cấu trúc dữ liệu Ngăn xếp (Stack) hoạt động dựa trên nguyên lý truy xuất nào sau đây?",
+                    options: ["FIFO (First In, First Out)", "LIFO (Last In, First Out)", "LILO (Last In, Last Out)", "Ngẫu nhiên (Random Access)"],
+                    answerIndex: 1,
+                    rationale: "Stack hoạt động theo nguyên lý LIFO (Last In, First Out) nghĩa là phần tử nào được thêm vào sau cùng sẽ là phần tử đầu tiên được lấy ra khỏi ngăn xếp.",
+                    bloomLevel: "Nhận biết"
+                },
+                {
+                    question: "Thao tác nào sau đây dùng để xóa và trả về phần tử nằm ở đỉnh của Ngăn xếp (Stack) với độ phức tạp thuật toán O(1)?",
+                    options: ["Push", "Peek", "Pop", "Top"],
+                    answerIndex: 2,
+                    rationale: "Thao tác Pop thực hiện việc lấy ra đồng thời xóa phần tử ở đỉnh Stack, trong khi Push dùng để thêm, Peek/Top chỉ dùng để xem phần tử đỉnh mà không xóa.",
+                    bloomLevel: "Nhận biết"
+                },
+                {
+                    question: "Nguyên nhân chủ yếu dẫn đến lỗi tràn bộ nhớ Ngăn xếp (Stack Overflow) khi lập trình các giải thuật Đệ quy (Recursion) là gì?",
+                    options: ["Số lượng biến cục bộ khai báo trong chương trình quá ít", "Hệ điều hành cấp phát nhầm bộ nhớ Heap thay vì Call Stack", "Đệ quy vô hạn do không có hoặc không đạt được điều kiện dừng để thoát", "Stack bị rỗng khi gọi thao tác Pop"],
+                    answerIndex: 2,
+                    rationale: "Khi giải thuật đệ quy chạy vô hạn mà không chạm tới điều kiện cơ bản (base case), các bản ghi hoạt động (activation records) sẽ liên tục được đẩy vào Call Stack làm đầy dung lượng bộ nhớ được cấp phát, dẫn đến tràn bộ nhớ Stack.",
+                    bloomLevel: "Thông hiểu"
+                }
+            ],
+            economics: [
+                {
+                    question: "Theo Quy luật Cầu trong Kinh tế vi mô, khi các yếu tố khác không đổi, mối quan hệ giữa Giá (P) và Lượng cầu (Qd) của một hàng hóa thông thường sẽ như thế nào?",
+                    options: ["Giá tăng làm Lượng cầu tăng tỉ lệ thuận", "Giá tăng làm Lượng cầu giảm", "Giá giảm làm Lượng cầu giảm", "Giá và Lượng cầu không có mối quan hệ"],
+                    answerIndex: 1,
+                    rationale: "Quy luật cầu phát biểu mối quan hệ ngược chiều giữa giá và lượng cầu: khi giá tăng lên, người tiêu dùng có xu hướng mua ít đi, dẫn đến lượng cầu giảm xuống.",
+                    bloomLevel: "Nhận biết"
+                },
+                {
+                    question: "Hiện tượng dư thừa hàng hóa (Surplus) xảy ra trên thị trường tự do khi nào?",
+                    options: ["Khi giá thực tế cao hơn giá cân bằng thị trường", "Khi lượng cầu lớn hơn lượng cung", "Khi giá thực tế thấp hơn giá cân bằng", "Khi chính phủ áp đặt mức giá trần thấp hơn giá thị trường"],
+                    answerIndex: 0,
+                    rationale: "Khi giá bán cao hơn mức giá cân bằng, người bán muốn cung cấp nhiều hơn (Qs tăng) trong khi người mua muốn mua ít đi (Qd giảm), dẫn đến Qs > Qd gây ra hiện tượng dư cung hay dư thừa.",
+                    bloomLevel: "Thông hiểu"
+                }
+            ]
+        };
+
+        // Active State variables
+        let questions = [];
+        let exportFormat = 'gift'; // 'gift' or 'aiken'
+        let currentPreset = 'newton';
+
+        // ----------------------------------------------------
+        // INITIALIZERS & APIS CONFIG
+        // ----------------------------------------------------
+
+        window.onload = function() {
+            // Load key if exists
+            const savedProvider = localStorage.getItem('api_provider') || 'mock';
+            document.getElementById('api-provider').value = savedProvider;
+            
+            switchApiProvider();
+            loadPreset('newton'); // Load initial preset
+        };
+
+        function switchApiProvider() {
+            const provider = document.getElementById('api-provider').value;
+            localStorage.setItem('api_provider', provider);
+
+            const keyGroup = document.getElementById('api-key-group');
+            const modelGroup = document.getElementById('api-model-group');
+            const modelSelect = document.getElementById('api-model');
+
+            if (provider === 'mock') {
+                keyGroup.style.display = 'none';
+                modelGroup.style.display = 'none';
+            } else {
+                keyGroup.style.display = 'flex';
+                modelGroup.style.display = 'flex';
+                modelSelect.innerHTML = '';
+
+                // Load saved API Key
+                const savedKey = localStorage.getItem(`api_key_${provider}`) || '';
+                document.getElementById('api-key').value = savedKey;
+                updateKeyStatus(savedKey);
+
+                if (provider === 'gemini') {
+                    modelSelect.innerHTML = `
+                        <option value="gemini-2.5-flash">Gemini 2.5 Flash (Khuyên dùng)</option>
+                        <option value="gemini-1.5-flash">Gemini 1.5 Flash (Tiết kiệm)</option>
+                        <option value="gemini-2.5-pro">Gemini 2.5 Pro (Thông minh nhất)</option>
+                    `;
+                } else if (provider === 'openai') {
+                    modelSelect.innerHTML = `
+                        <option value="gpt-4o-mini">GPT-4o Mini (Khuyên dùng - Nhanh)</option>
+                        <option value="gpt-4o">GPT-4o (Cao cấp - Chính xác)</option>
+                    `;
+                }
+            }
+        }
+
+        function saveApiKey() {
+            const provider = document.getElementById('api-provider').value;
+            const keyVal = document.getElementById('api-key').value.trim();
+            
+            if (!keyVal) {
+                alert("Vui lòng nhập API Key trước khi lưu!");
+                return;
+            }
+
+            localStorage.setItem(`api_key_${provider}`, keyVal);
+            updateKeyStatus(keyVal);
+            showToast("Đã lưu API Key bảo mật thành công!");
+        }
+
+        function updateKeyStatus(key) {
+            const statusSpan = document.getElementById('key-saved-status');
+            if (key) {
+                statusSpan.innerText = "Đã lưu ✓";
+                statusSpan.style.color = "var(--secondary)";
+            } else {
+                statusSpan.innerText = "Chưa lưu";
+                statusSpan.style.color = "var(--text-muted)";
+            }
+        }
+
+        function loadPreset(presetKey) {
+            currentPreset = presetKey;
+            
+            // Toggle active styles on pills
+            document.querySelectorAll('.preset-pill').forEach(pill => pill.classList.remove('active'));
+            if (presetKey === 'newton') document.getElementById('preset-newton').classList.add('active');
+            if (presetKey === 'stack') document.getElementById('preset-stack').classList.add('active');
+            if (presetKey === 'economics') document.getElementById('preset-economics').classList.add('active');
+
+            // Load text in textarea
+            document.getElementById('slide-text').value = slidePresets[presetKey];
+        }
+
+        // ----------------------------------------------------
+        // CORE ACTION: MCQ GENERATOR (MOCK & LIVE API)
+        // ----------------------------------------------------
+
+        async function generateMCQs() {
+            const slideText = document.getElementById('slide-text').value.trim();
+            const provider = document.getElementById('api-provider').value;
+            const bloom = document.getElementById('bloom-level').value;
+
+            if (!slideText) {
+                alert("Vui lòng nhập hoặc dán nội dung slide bài giảng trước!");
+                return;
+            }
+
+            // UI Loading state
+            const spinner = document.getElementById('gen-spinner');
+            const genText = document.getElementById('gen-text');
+            const genBtn = document.getElementById('btn-generate-mcq');
+
+            spinner.style.display = 'inline-block';
+            genText.innerText = "AI Đang phân tích Slide bài giảng...";
+            genBtn.disabled = true;
+
+            try {
+                if (provider === 'mock') {
+                    // Simulate loading network delay
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    // Copy mock data deep copy
+                    questions = JSON.parse(JSON.stringify(mockQuestionsData[currentPreset] || mockQuestionsData.newton));
+                    showToast("Đã tạo đề nháp mô phỏng thành công!");
+                } else {
+                    const apiKey = localStorage.getItem(`api_key_${provider}`);
+                    if (!apiKey) {
+                        throw new Error(`Bạn chưa lưu API Key cho ${provider}! Hãy nhập và bấm 'Lưu Key' phía trên.`);
+                    }
+
+                    const model = document.getElementById('api-model').value;
+                    
+                    if (provider === 'gemini') {
+                        questions = await fetchGeminiMCQ(slideText, bloom, apiKey, model);
+                    } else if (provider === 'openai') {
+                        questions = await fetchOpenAiMCQ(slideText, bloom, apiKey, model);
+                    }
+                    showToast("AI đã sinh bộ câu hỏi thực tế thành công!");
+                }
+
+                // Render questions on success
+                renderBoard();
+                
+            } catch (err) {
+                console.error(err);
+                alert(`Lỗi khi tạo câu hỏi: ${err.message}`);
+            } finally {
+                // UI Restore
+                spinner.style.display = 'none';
+                genText.innerText = "Phân tích & Soạn Nháp MCQ Bằng AI";
+                genBtn.disabled = false;
+            }
+        }
+
+        // --- GOOGLE GEMINI API CONNECTOR ---
+        async function fetchGeminiMCQ(text, bloom, apiKey, model) {
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+            
+            const prompt = `You are a professional university assessment developer.
+Strictly analyze this lecture/slide content:
+"${text}"
+
+Create a highly logical set of 4 multiple-choice questions (MCQs) in Vietnamese matching these guidelines:
+- Cognitive focus: ${bloom}.
+- Each question must have exactly 4 choices (A, B, C, D) and 1 correct answer (expressed as an index 0, 1, 2, 3).
+- Distractors must be highly plausible, scientific, and reflect common student mistakes (avoid obviously silly answers).
+- Provide a brief rationale in Vietnamese explaining the logic and why distractors are wrong.
+
+Return ONLY a valid JSON array of questions conforming to this schema:
+[
+  {
+    "question": "Question text in Vietnamese...",
+    "options": ["Option A", "Option B", "Option C", "Option D"],
+    "answerIndex": 2, // 0 for A, 1 for B, 2 for C, 3 for D
+    "rationale": "Explanation in Vietnamese...",
+    "bloomLevel": "Bloom Level string"
+  }
+]`;
+
+            const requestBody = {
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "ARRAY",
+                        items: {
+                            type: "OBJECT",
+                            properties: {
+                                question: { type: "STRING" },
+                                options: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                answerIndex: { type: "INTEGER" },
+                                rationale: { type: "STRING" },
+                                bloomLevel: { type: "STRING" }
+                            },
+                            required: ["question", "options", "answerIndex", "rationale", "bloomLevel"]
+                        }
+                    }
+                }
+            };
+
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.error?.message || `HTTP status ${response.status}`);
+            }
+
+            const data = await response.json();
+            const textResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            return JSON.parse(textResponse);
+        }
+
+        // --- OPENAI API CONNECTOR ---
+        async function fetchOpenAiMCQ(text, bloom, apiKey, model) {
+            const endpoint = 'https://api.openai.com/v1/chat/completions';
+            
+            const prompt = `Strictly analyze this lecture/slide content:
+"${text}"
+
+Create a highly logical set of 4 multiple-choice questions (MCQs) in Vietnamese:
+- Cognitive focus: ${bloom}.
+- Each question must have exactly 4 choices (A, B, C, D) and 1 correct answer (answerIndex: 0-3).
+- Distractors must be highly plausible, representing common conceptual errors.
+- Provide a brief rationale in Vietnamese explaining why the key is correct and distractors wrong.`;
+
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: model,
+                    messages: [
+                        {
+                            role: "system",
+                            content: `You are an expert academic evaluator. Create MCQs in Vietnamese. You MUST return ONLY a JSON array matching this format: [{"question": "...", "options": ["A", "B", "C", "D"], "answerIndex": 0, "rationale": "...", "bloomLevel": "..."}]`
+                        },
+                        {
+                            role: "user",
+                            content: prompt
+                        }
+                    ],
+                    response_format: { type: "json_object" }
+                })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.error?.message || `HTTP status ${response.status}`);
+            }
+
+            const data = await response.json();
+            const jsonText = data.choices?.[0]?.message?.content;
+            
+            // Clean or scrape in case the LLM wrapped it in a nested key
+            const parsed = JSON.parse(jsonText);
+            if (Array.isArray(parsed)) return parsed;
+            if (parsed.questions && Array.isArray(parsed.questions)) return parsed.questions;
+            
+            // Fallback object keys parse
+            const key = Object.keys(parsed)[0];
+            if (Array.isArray(parsed[key])) return parsed[key];
+            
+            throw new Error("Không thể trích xuất cấu trúc dữ liệu JSON mảng từ OpenAI.");
+        }
+
+
+        // ----------------------------------------------------
+        // HITL INTERACTIVE BOARD & EDITOR RENDERING
+        // ----------------------------------------------------
+
+        function renderBoard() {
+            const emptyState = document.getElementById('empty-state');
+            const cardsBoard = document.getElementById('cards-board');
+            const addQBtn = document.getElementById('btn-add-q');
+            const countLabel = document.getElementById('board-count');
+
+            if (questions.length === 0) {
+                emptyState.style.display = 'flex';
+                cardsBoard.style.display = 'none';
+                addQBtn.style.display = 'none';
+                countLabel.innerText = "0 Câu hỏi";
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            cardsBoard.style.display = 'flex';
+            addQBtn.style.display = 'flex';
+            countLabel.innerText = `${questions.length} Câu hỏi`;
+
+            cardsBoard.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'editor-card';
+                card.id = `q-card-${idx}`;
+                
+                // Initialize default chat history if empty
+                if (!q.chatHistory) {
+                    q.chatHistory = [];
+                }
+
+                // Compile options HTML
+                let optionsHtml = '';
+                q.options.forEach((opt, optIdx) => {
+                    const optionLetter = String.fromCharCode(65 + optIdx); // A, B, C, D
+                    optionsHtml += `
+                        <div class="option-row">
+                            <span class="opt-label">${optionLetter}.</span>
+                            <input type="radio" class="opt-radio" name="correct-radio-${idx}" ${q.answerIndex === optIdx ? 'checked' : ''} onchange="updateCorrectKey(${idx}, ${optIdx})">
+                            <input type="text" class="opt-input ${q.answerIndex === optIdx ? 'correct' : ''}" value="${opt}" oninput="updateOptionText(${idx}, ${optIdx}, this.value)">
+                        </div>
+                    `;
+                });
+
+                // Compile chat bubbles
+                let chatHistoryHtml = '';
+                q.chatHistory.forEach(msg => {
+                    chatHistoryHtml += `<div class="bubble ${msg.role}">${msg.message}</div>`;
+                });
+
+                card.innerHTML = `
+                    <div class="card-topbar">
+                        <span class="card-tag">Câu Hỏi ${idx + 1} (${q.bloomLevel || 'Đánh giá'})</span>
+                        <div class="card-actions">
+                            <button class="btn-card-action move" onclick="moveQuestion(${idx}, -1)" title="Di chuyển lên">▲</button>
+                            <button class="btn-card-action move" onclick="moveQuestion(${idx}, 1)" title="Di chuyển xuống">▼</button>
+                            <button class="btn-card-action" onclick="deleteQuestion(${idx})" title="Xóa câu hỏi">✕</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group" style="margin-bottom: 0.5rem;">
+                        <textarea class="custom-textarea" style="min-height: 70px; font-weight: 500;" placeholder="Nhập tiêu đề câu hỏi..." oninput="updateQuestionStem(${idx}, this.value)">${q.question}</textarea>
+                    </div>
+
+                    <div class="options-list">
+                        ${optionsHtml}
+                    </div>
+
+                    <!-- Collaborative Re-Act Chat Section (HITL Loop) -->
+                    <div class="card-refine-box">
+                        <div class="input-lbl" style="font-size: 0.75rem;">
+                            <span>💬 VÒNG LẶP TINH CHỈNH RE-ACT (GV & AI)</span>
+                            <span class="accent">Nháp ${q.chatHistory.length ? Math.ceil(q.chatHistory.length / 2) : 0}</span>
+                        </div>
+                        
+                        <div class="chat-history-container" id="chat-hist-${idx}" style="display: ${q.chatHistory.length ? 'flex' : 'none'}">
+                            ${chatHistoryHtml}
+                        </div>
+
+                        <div class="refine-input-group">
+                            <input type="text" class="refine-input" id="refine-input-${idx}" placeholder="GV góp ý sửa câu này (ví dụ: đổi đáp án nhiễu C, tăng độ khó)...">
+                            <button class="btn-refine" id="refine-btn-${idx}" onclick="refineQuestion(${idx})" title="AI phản hồi và hành động sửa đổi">➔</button>
+                        </div>
+                    </div>
+                `;
+                cardsBoard.appendChild(card);
+            });
+
+            // Update top progress visual bar based on items
+            document.getElementById('status-fill').style.width = `${Math.min(questions.length * 12, 100)}%`;
+
+            // Compile export text preview
+            compileExportPreview();
+        }
+
+        // ----------------------------------------------------
+        // CARD EDITING TRIGGERS
+        // ----------------------------------------------------
+
+        function updateQuestionStem(qIdx, text) {
+            questions[qIdx].question = text;
+            compileExportPreview();
+        }
+
+        function updateOptionText(qIdx, optIdx, text) {
+            questions[qIdx].options[optIdx] = text;
+            compileExportPreview();
+        }
+
+        function updateCorrectKey(qIdx, optIdx) {
+            questions[qIdx].answerIndex = optIdx;
+            
+            // Re-render card board to color-highlight correct input
+            renderBoard();
+        }
+
+        function deleteQuestion(qIdx) {
+            questions.splice(qIdx, 1);
+            renderBoard();
+        }
+
+        function moveQuestion(qIdx, direction) {
+            const targetIdx = qIdx + direction;
+            if (targetIdx >= 0 && targetIdx < questions.length) {
+                // Swap
+                const temp = questions[qIdx];
+                questions[qIdx] = questions[targetIdx];
+                questions[targetIdx] = temp;
+                renderBoard();
+            }
+        }
+
+        function addNewQuestion() {
+            questions.push({
+                question: "Tiêu đề câu hỏi trắc nghiệm mới...",
+                options: ["Phương án A", "Phương án B", "Phương án C", "Phương án D"],
+                answerIndex: 0,
+                rationale: "Bản giải thích...",
+                bloomLevel: "Mới tạo",
+                chatHistory: []
+            });
+            renderBoard();
+            
+            // Scroll new item into view
+            const lastCard = document.getElementById(`q-card-${questions.length - 1}`);
+            if (lastCard) {
+                lastCard.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // ----------------------------------------------------
+        // RE-ACT LOOP REFINEMENT PER CARD
+        // ----------------------------------------------------
+
+        async function refineQuestion(qIdx) {
+            const refineInputEl = document.getElementById(`refine-input-${qIdx}`);
+            const feedbackText = refineInputEl.value.trim();
+            const provider = document.getElementById('api-provider').value;
+
+            if (!feedbackText) return;
+
+            // Clear input field
+            refineInputEl.value = '';
+
+            // 1. Add Lecturer message to state
+            questions[qIdx].chatHistory.push({ role: 'gv', message: feedbackText });
+            renderBoard(); // Render immediately to display user message
+
+            // Make sure the chat container is open
+            const chatContainer = document.getElementById(`chat-hist-${qIdx}`);
+            chatContainer.style.display = 'flex';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            // Disable refinement button
+            const refineBtn = document.getElementById(`refine-btn-${qIdx}`);
+            refineBtn.disabled = true;
+
+            try {
+                if (provider === 'mock') {
+                    // MOCK SIMULATOR FEEDBACK PIPELINE
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+
+                    // Detailed pre-baked Newton modification simulation if they refine Newton Q1
+                    if (currentPreset === 'newton' && qIdx === 0 && feedbackText.toLowerCase().includes('khó') || feedbackText.toLowerCase().includes('độ khó')) {
+                        // Change it to the advanced horizontal friction calculation!
+                        questions[0].question = "Một vật khối lượng 2 kg đang đứng yên chịu tác dụng của lực kéo F = 8 N theo phương nằm ngang. Bỏ qua lực cản ma sát. Sau 3 giây kể từ khi bắt đầu tác dụng lực, vật đi được quãng đường bằng bao nhiêu?";
+                        questions[0].options = ["12 m", "36 m", "6 m", "18 m"];
+                        questions[0].answerIndex = 3;
+                        questions[0].bloomLevel = "Vận dụng (Bloom 3)";
+                        questions[0].rationale = "a = F/m = 8/2 = 4m/s2. Quãng đường s = 0.5 * 4 * 3^2 = 18m.";
+                        
+                        questions[0].chatHistory.push({
+                            role: 'ai-reason',
+                            message: "Giảng viên muốn nâng cấp độ Bloom lên Level 3 (Vận dụng) bằng việc đưa bài toán tính toán số học cụ thể liên đới giữa Lực, Khối lượng, Thời gian và Quãng đường vật đi được (s = 0.5 * a * t^2).\nĐổi phương án nhiễu D thành 'Giảm 4 lần' để tăng tính tương quan. Tôi sẽ lập công thức và tạo bản nháp 2."
+                        });
+                    } else {
+                        // Default mock edit response
+                        questions[qIdx].options[2] = `${questions[qIdx].options[2]} (Đã chỉnh sửa theo góp ý)`;
+                        questions[qIdx].chatHistory.push({
+                            role: 'ai-reason',
+                            message: `Đã ghi nhận yêu cầu: "${feedbackText}". Phân tích khái niệm và điều chỉnh nội dung đáp án nhiễu C để tăng tính hợp lý học thuật và Plausibility...`
+                        });
+                    }
+                } else {
+                    // LIVE RE-ACT API CALL
+                    const apiKey = localStorage.getItem(`api_key_${provider}`);
+                    const model = document.getElementById('api-model').value;
+                    
+                    const responseJson = await callApiToRefineQuestion(questions[qIdx], feedbackText, provider, apiKey, model);
+                    
+                    // Update card question content from live API response
+                    questions[qIdx].question = responseJson.question;
+                    questions[qIdx].options = responseJson.options;
+                    questions[qIdx].answerIndex = responseJson.answerIndex;
+                    questions[qIdx].bloomLevel = responseJson.bloomLevel;
+                    questions[qIdx].rationale = responseJson.rationale;
+                    
+                    questions[qIdx].chatHistory.push({
+                        role: 'ai-reason',
+                        message: `Đã hoàn thành! AI Reasoning: ${responseJson.thought || "Đã điều chỉnh câu hỏi theo đúng ý giảng viên. Cập nhật lại các phương án nhiễu."}`
+                    });
+                }
+                
+                showToast("AI đã cập nhật câu hỏi thành công!");
+                renderBoard();
+
+            } catch (err) {
+                console.error(err);
+                alert(`Lỗi khi tinh chỉnh câu hỏi: ${err.message}`);
+                // Remove the last user message since it failed
+                questions[qIdx].chatHistory.pop();
+                renderBoard();
+            }
+        }
+
+        // Live API call to refine a single question card
+        async function callApiToRefineQuestion(qObj, feedback, provider, apiKey, model) {
+            const historyText = qObj.chatHistory.map(h => `${h.role === 'gv' ? 'Lecturer' : 'AI Reasoning'}: ${h.message}`).join("\n");
+            
+            const prompt = `You are a university test developer.
+We are co-authoring a multiple-choice question (MCQ).
+Current question state:
+Question: "${qObj.question}"
+Options:
+- A: "${qObj.options[0]}"
+- B: "${qObj.options[1]}"
+- C: "${qObj.options[2]}"
+- D: "${qObj.options[3]}"
+Correct Key index (0-3): ${qObj.answerIndex}
+Current Bloom level: "${qObj.bloomLevel}"
+
+Lecturer's feedback and request:
+"${feedback}"
+
+Collaborative dialogue history:
+${historyText}
+
+Based on this feedback, refine the question. Correct the options, the question stem, or the answer keys as requested by the Lecturer. Keep the rest same if not specified.
+Return ONLY a valid JSON object conforming strictly to this schema:
+{
+  "thought": "Explain your reasoning in Vietnamese in 1-2 sentences...",
+  "question": "Updated question stem in Vietnamese",
+  "options": ["Updated Option A", "Updated Option B", "Updated Option C", "Updated Option D"],
+  "answerIndex": 0, // index of correct answer
+  "rationale": "Updated rationale in Vietnamese",
+  "bloomLevel": "Updated Bloom level"
+}`;
+
+            if (provider === 'gemini') {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: {
+                            responseMimeType: "application/json",
+                            responseSchema: {
+                                type: "OBJECT",
+                                properties: {
+                                    thought: { type: "STRING" },
+                                    question: { type: "STRING" },
+                                    options: {
+                                        type: "ARRAY",
+                                        items: { type: "STRING" }
+                                    },
+                                    answerIndex: { type: "INTEGER" },
+                                    rationale: { type: "STRING" },
+                                    bloomLevel: { type: "STRING" }
+                                },
+                                required: ["thought", "question", "options", "answerIndex", "rationale", "bloomLevel"]
+                            }
+                        }
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error?.message || `HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                const textResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                return JSON.parse(textResponse);
+                
+            } else if (provider === 'openai') {
+                const endpoint = 'https://api.openai.com/v1/chat/completions';
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: model,
+                        messages: [
+                            {
+                                role: "system",
+                                content: "You are a professional test developer. You MUST respond strictly in valid JSON format."
+                            },
+                            {
+                                role: "user",
+                                content: prompt
+                            }
+                        ],
+                        response_format: { type: "json_object" }
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error?.message || `HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                const jsonText = data.choices?.[0]?.message?.content;
+                return JSON.parse(jsonText);
+            }
+        }
+
+
+        // ----------------------------------------------------
+        // LIVE GIFT/AIKEN REAL-TIME FORMAT COMPILER
+        // ----------------------------------------------------
+
+        function setExportFormat(format) {
+            exportFormat = format;
+            document.getElementById('tab-gift-btn').className = `export-tab-btn ${format === 'gift' ? 'active' : ''}`;
+            document.getElementById('tab-aiken-btn').className = `export-tab-btn ${format === 'aiken' ? 'active' : ''}`;
+            
+            compileExportPreview();
+        }
+
+        function compileExportPreview() {
+            const previewBox = document.getElementById('export-code-preview');
+            
+            if (questions.length === 0) {
+                previewBox.innerText = "// Hãy tạo câu hỏi trước...";
+                return;
+            }
+
+            let compiledText = '';
+
+            if (exportFormat === 'gift') {
+                // GIFT COMPILER
+                questions.forEach((q, idx) => {
+                    compiledText += `// Câu hỏi ${idx + 1} - Bloom: ${q.bloomLevel || 'Đánh giá'}\n`;
+                    compiledText += `:: MCQ_${idx + 1} :: ${q.question} {\n`;
+                    
+                    q.options.forEach((opt, optIdx) => {
+                        const isCorrect = (q.answerIndex === optIdx);
+                        if (isCorrect) {
+                            compiledText += `  =${opt} # Chính xác! ${q.rationale.replace(/\n/g, ' ')}\n`;
+                        } else {
+                            compiledText += `  ~${opt} # Sai.\n`;
+                        }
+                    });
+                    
+                    compiledText += `}\n\n`;
+                });
+            } else {
+                // AIKEN COMPILER
+                questions.forEach((q, idx) => {
+                    compiledText += `${q.question}\n`;
+                    
+                    q.options.forEach((opt, optIdx) => {
+                        const letter = String.fromCharCode(65 + optIdx);
+                        compiledText += `${letter}. ${opt}\n`;
+                    });
+                    
+                    const correctLetter = String.fromCharCode(65 + q.answerIndex);
+                    compiledText += `ANSWER: ${correctLetter}\n\n`;
+                });
+            }
+
+            previewBox.innerText = compiledText;
+        }
+
+        // Copy code to Clipboard utility
+        function copyToClipboard() {
+            const codeText = document.getElementById('export-code-preview').innerText;
+            if (questions.length === 0 || codeText.startsWith('//')) {
+                alert("Không có nội dung mã để sao chép!");
+                return;
+            }
+
+            navigator.clipboard.writeText(codeText).then(() => {
+                showToast("Đã sao chép toàn bộ mã vào Clipboard!");
+            }).catch(err => {
+                alert(`Không thể sao chép: ${err.message}`);
+            });
+        }
+
+        // File text download utility
+        function downloadFile() {
+            const codeText = document.getElementById('export-code-preview').innerText;
+            if (questions.length === 0 || codeText.startsWith('//')) {
+                alert("Không có nội dung mã để tải về!");
+                return;
+            }
+
+            const formatExt = exportFormat === 'gift' ? 'gift' : 'aiken';
+            const fileName = `mcq-export-${formatExt}-${currentPreset}-${Date.now()}.txt`;
+            
+            const blob = new Blob([codeText], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = fileName;
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast(`Đã tải file ${fileName} thành công!`);
+        }
+
+        // Toast messaging system
+        function showToast(message) {
+            const toast = document.getElementById('feedback-toast');
+            document.getElementById('toast-message').innerText = message;
+            
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+    </script>
+</body>
+</html>

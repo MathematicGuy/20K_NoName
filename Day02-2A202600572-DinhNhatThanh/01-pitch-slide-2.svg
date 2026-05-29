@@ -1,0 +1,54 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#06D6A0"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" rx="12" fill="url(#bg)" stroke="#334155" stroke-width="1"/>
+
+  <!-- Top bar gradient accent -->
+  <rect x="0" y="0" width="800" height="6" fill="url(#accent)"/>
+
+  <!-- Footer -->
+  <line x1="40" y1="410" x2="760" y2="410" stroke="#334155" stroke-width="1"/>
+  <text x="40" y="428" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">PITCH DECK | SOẠN MCQ RE-ACT AI</text>
+  <text x="400" y="428" text-anchor="middle" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">ĐINH NHẬT THANH - 2A202600572</text>
+  <text x="760" y="428" text-anchor="end" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800">SLIDE 2/7</text>
+
+  <!-- Slide Title -->
+  <text x="40" y="50" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" letter-spacing="1">BÁO CÁO PHÂN TÍCH</text>
+  <text x="40" y="80" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800">🔴 NỖI ĐAU THỊ TRƯỜNG &amp; THIỆT HẠI THỰC TẾ</text>
+  <line x1="40" y1="92" x2="150" y2="92" stroke="#06D6A0" stroke-width="2"/>
+
+  <!-- Content -->
+  
+  <!-- Left Box: Pain Point -->
+  <rect x="40" y="120" width="340" height="250" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="60" y="155" fill="#EF4444" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800">❌ NỖI ĐAU CỦA GIẢI PHÁP THỦ CÔNG</text>
+  
+  <text x="60" y="195" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">• Tốn 120-180 phút soạn 20 câu hỏi chất lượng</text>
+  <text x="60" y="225" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">• Căng thẳng cực độ khi nghĩ 3 phương án nhiễu</text>
+  <text x="60" y="255" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">• Lỗi định dạng Aiken/GIFT khi import LMS</text>
+  <text x="60" y="285" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">• GV kiệt sức dễ copy đề cũ gây rò rỉ đề thi</text>
+
+  <!-- Right Box: Metrics &amp; Impact -->
+  <rect x="420" y="120" width="340" height="250" rx="10" fill="#FF5A5F" fill-opacity="0.05" stroke="#FF5A5F" stroke-width="1" stroke-dasharray="3,3" filter="url(#shadow)"/>
+  <text x="440" y="155" fill="#FF5A5F" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800">📊 THIỆT HẠI THỰC TẾ (FACULTY SCALE)</text>
+  
+  <text x="440" y="210" fill="#FF5A5F" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="900">40 - 60 giờ</text>
+  <text x="440" y="235" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">Lãng phí mỗi tuần trên quy mô Khoa (20 GV)</text>
+  
+  <text x="440" y="280" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">➔ Giảng viên bị biến thành "thợ gõ" hành chính</text>
+  <text x="440" y="305" fill="#E2E8F0" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600">➔ Chất lượng đề thi giảm sút do thiếu đầu tư</text>
+
+</svg>

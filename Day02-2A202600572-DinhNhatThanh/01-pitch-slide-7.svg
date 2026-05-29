@@ -1,0 +1,71 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#06D6A0"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" rx="12" fill="url(#bg)" stroke="#334155" stroke-width="1"/>
+
+  <!-- Top bar gradient accent -->
+  <rect x="0" y="0" width="800" height="6" fill="url(#accent)"/>
+
+  <!-- Footer -->
+  <line x1="40" y1="410" x2="760" y2="410" stroke="#334155" stroke-width="1"/>
+  <text x="40" y="428" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">PITCH DECK | SOẠN MCQ RE-ACT AI</text>
+  <text x="400" y="428" text-anchor="middle" fill="#64748B" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">ĐINH NHẬT THANH - 2A202600572</text>
+  <text x="760" y="428" text-anchor="end" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800">SLIDE 7/7</text>
+
+  <!-- Slide Title -->
+  <text x="40" y="50" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" letter-spacing="1">BÁO CÁO PHÂN TÍCH</text>
+  <text x="40" y="80" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800">🎯 LỘ TRÌNH TRIỂN KHAI THỬ NGHIỆM TINH GỌN</text>
+  <line x1="40" y1="92" x2="150" y2="92" stroke="#06D6A0" stroke-width="2"/>
+
+  <!-- Content -->
+  
+  <!-- Roadmap Timeline -->
+  <text x="40" y="125" fill="#06D6A0" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800">LỘ TRÌNH TRIỂN KHAI THỬ NGHIỆM TINH GỌN (PILOT)</text>
+
+  <!-- Line -->
+  <line x1="100" y1="210" x2="700" y2="210" stroke="#475569" stroke-width="2"/>
+
+  <!-- Milestone 1 -->
+  <g transform="translate(100, 210)">
+    <circle r="8" fill="#38BDF8"/>
+    <text x="0" y="30" text-anchor="middle" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800">TUẦN 1 - 2</text>
+    <text x="0" y="50" text-anchor="middle" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Thử Nghiệm Pilot</text>
+    <text x="0" y="70" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500">Dùng prompt chuẩn</text>
+    <text x="0" y="86" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500">với 3 Giảng Viên</text>
+  </g>
+
+  <!-- Milestone 2 -->
+  <g transform="translate(350, 210)">
+    <circle r="8" fill="#F59E0B"/>
+    <text x="0" y="30" text-anchor="middle" fill="#F59E0B" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800">TUẦN 3 - 4</text>
+    <text x="0" y="50" text-anchor="middle" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">WebApp Xây dựng</text>
+    <text x="0" y="70" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500">Tích hợp Rule-parser</text>
+    <text x="0" y="86" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500">triển khai toàn Khoa</text>
+  </g>
+
+  <!-- Milestone 3 -->
+  <g transform="translate(600, 210)">
+    <circle r="8" fill="#06D6A0"/>
+    <text x="0" y="30" text-anchor="middle" fill="#06D6A0" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800">DỰ KIẾN</text>
+    <text x="0" y="50" text-anchor="middle" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Đầu Tư Hệ Thống</text>
+    <text x="0" y="70" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500">Quyết định nâng cấp</text>
+    <text x="0" y="86" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500">tích hợp trực tiếp LMS</text>
+  </g>
+
+  <!-- Call to Action Text -->
+  <text x="400" y="345" text-anchor="middle" fill="#38BDF8" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800">👉 HÀNH ĐỘNG NGAY: KIẾN NGHỊ BẮT ĐẦU GIAI ĐOẠN PILOT TUẦN TỚI</text>
+
+</svg>
