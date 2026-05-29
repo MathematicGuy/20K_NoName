@@ -19,14 +19,17 @@
 | 12 | Chi | Tổng hợp đơn order trưa từ chat | HR/Admin | Lội chat, nhập Excel thủ công (25 phút) | Dễ thực nghiệm, tác động hàng ngày |
 | 13 | Chi | Chia tiền, thu tiền, đối chiếu | HR/Admin | Tính ship, check ngân hàng (15-20 phút) | Thất thoát 2-3% |
 | 14 | Chi | Nhập menu từ ảnh/link quán mới | HR/Admin | Gõ tay tên món, giá | Mỗi lần đổi quán 10-15 phút |
+| 15 | Cường | Tóm tắt paper thành note có cấu trúc | Researcher/Sinh viên | Đọc và tự viết note có cấu trúc (10 phút) | Workflow rõ, tiết kiệm 25-45 phút/paper |
+| 16 | Cường | So sánh nhiều paper/method vào bảng luận điểm | Researcher/Sinh viên | Bóc tách và chuẩn hóa thông tin giữa nhiều paper | Rất tốn công khi chuẩn bị literature review |
+| 17 | Cường | Truy vết claim, con số và nguồn trích dẫn | Researcher/Sinh viên | Tìm đoạn gốc trong nhiều PDF (5 phút) | Tránh sai lệch lập luận, giá trị kiểm chứng cao |
 
-### Bước 3.2 — Gom trùng / cluster
+### Bước 3.2 — Cluster
 
 | Cluster | Candidates included | Pattern chung | Ghi chú |
 |---------|---------------------|---------------|----------|
 | A — Tạo nội dung mới từ tài liệu có cấu trúc | MCQ từ slide, Báo cáo CLO, Nhập menu từ ảnh | Sinh câu hỏi / báo cáo / data từ input có sẵn | Cần AI sáng tạo nội dung, có tính lặp cao |
-| B — Tổng hợp dữ liệu phi cấu trúc từ nhiều nguồn | Trả lời SV lặp, Tổng hợp ghi chú, Tổng hợp paper, Order từ chat | Gom chat/email/note rải rác → bảng/báo cáo có cấu trúc | Pattern phổ biến, workflow tuyến tính, dễ rule-based |
-| C — Tìm kiếm / truy xuất thông tin | Tìm slide cũ, Theo dõi deadline | Tìm file/deadline trong nhiều nơi (email, Drive, LMS) | Có thể giải bằng Rule/Search, không cần AI phức tạp |
+| B — Tổng hợp dữ liệu phi cấu trúc từ nhiều nguồn | Trả lời SV lặp, Tổng hợp ghi chú, Tổng hợp paper, Order từ chat, Tóm tắt paper (Cường #15), So sánh nhiều paper (Cường #16) | Gom chat/email/note/paper rải rác → bảng/báo cáo/note có cấu trúc | Pattern phổ biến, workflow tuyến tính, dễ RAG/Rule |
+| C — Tìm kiếm / truy xuất thông tin | Tìm slide cũ, Theo dõi deadline, Truy vết claim (Cường #17) | Tìm file/deadline/claim trong nhiều nơi (email, Drive, LMS, PDF) | Có thể giải bằng Rule/Search/RAG đơn giản, không cần AI phức tạp |
 
 Nhóm thảo luận và quyết định chọn Cluster A vì:
 - Candidate MCQ có workflow cụ thể nhất.
