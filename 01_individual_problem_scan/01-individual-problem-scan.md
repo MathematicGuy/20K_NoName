@@ -1,55 +1,71 @@
----
 # 01 — Individual Problem Scan (cá nhân)
 
-## Scan rộng (5 problems trọng tâm)
+## Scan rộng
 
-Tôi chọn 5 problems từ trải nghiệm thực tế khi order đồ ăn trưa cho nhóm văn phòng (5-10 người). Các problem này đều có **workflow lặp lại hàng ngày**, **tốn thời gian rõ ràng**, và **có thể đo lường**.
+Tôi scan 10 problems từ trải nghiệm thật hàng ngày, đa dạng lăng kính.
 
 | # | Lăng kính | Problem quan sát được | Ai đang đau? | Dấu hiệu thật |
 |---|---|---|---|---|
-| 1 | Lặp lại + Tốn thời gian | Tổng hợp đơn hàng từ tin nhắn rải rác (text, ảnh, nút bấm lộn xộn) trong group chat | HR/Admin (người order) | Mỗi ngày mất 30-45 phút để lội ngược chat, copy-paste vào Excel, dễ sót đơn |
-| 2 | Lặp lại + Pain từ người khác | Mọi người đổi món, thêm món, hủy món vào phút chót, HR phải cập nhật liên tục | HR/Admin | Tin nhắn "cho em đổi sang cơm gà", "thêm trà đào" xuất hiện sau 11h, gây loạn |
-| 3 | Tốn thời gian + AI có thể tốt hơn | Chia tiền và thu tiền: tự tính ship, giảm giá, tiền lẻ, sau đó đối chiếu chuyển khoản thủ công | HR/Admin, kế toán | Mỗi bữa mất 15-20 phút bấm máy tính + check ngân hàng; hay bị thiếu tiền do ai đó quên |
-| 4 | Pain từ người khác | Nhân viên quên đặt hoặc quên trả tiền, HR phải nhắc nhở lặp lại, dễ sinh căng thẳng | HR/Admin, cả team | HR nhắn "bạn A ơi chưa chuyển tiền", nhân viên cảm thấy bị soi |
-| 5 | Lặp lại + Tốn thời gian | Nhập menu từ ảnh/link quán mới vào hệ thống (hoặc vào chat) một cách thủ công | HR/Admin | Khi đổi quán, HR mất 10-15 phút gõ lại từng món + giá |
+| 1 | Lặp lại + Tốn thời gian | Mỗi trưa phải hỏi khắp team "ăn gì? order chung không?" rồi tổng hợp món | Cả team (5-7 người) | Mất 15-20 phút mỗi ngày, tin nhắn lộn xộn, hay người quên reply |
+| 2 | Tốn thời gian + Lặp lại | Tự mở các app (Grab, ShopeeFood, BeFood, BAEMIN) so sánh giá/món để tìm tốt nhất | Cá nhân người order | Mỗi lần order mất 5-10 phút chuyển app, có ngày phải làm 2-3 lần |
+| 3 | AI có thể tốt hơn | Nhập món từ ảnh chụp menu (quán mới, order qua Zalo) vào app một cách thủ công | Người order | Hay gõ sai tên món, thiếu topping, phải gửi lại 2-3 lần |
+| 4 | Pain từ người khác | Người trong team than "order trễ quá, 12h30 mới có đồ", "sao giao thiếu món của tôi" | Cả team | Có người bỏ order giữa chừng, hoặc tự đi ăn riêng |
+| 5 | Lặp lại | Tính tiền và chia bill sau khi nhận đồ: ai ăn gì, giá bao nhiêu, ship bao nhiêu, ai chưa chuyển khoản | Người order, kế toán team | Mất 10-15 phút sau mỗi bữa, phải hỏi lại nhiều lần |
+| 6 | Tốn thời gian | Gọi điện hoặc nhắn tin riêng cho quán để xác nhận đơn (vì app không lấy được hết món) | Người order | Mất thêm 5 phút, dễ sai số điện thoại |
+| 7 | AI có thể tốt hơn | Order quán quen nhưng không lưu được món ưa thích của từng người, mỗi lần phải hỏi lại "Nam ăn gì? Ly uống gì?" | Người order, cả team | Lãng phí thời gian hỏi lại, nhiều người trả lời chậm |
+| 8 | Pain từ người khác | Người mới vào team không biết quy trình order, hỏi lại "mình order ở đâu? ship thế nào?" | Người order (onboarding lặp lại) | Mất 5-10 phút giải thích mỗi khi có người mới |
+| 9 | Lặp lại + Tốn thời gian | Phải dự trù giờ order để đồ về đúng 12h, nhưng thường xuyên sai (sớm quá hoặc trễ quá) | Người order, người đói | Đồ để nguội hoặc phải chờ thêm 20 phút |
+| 10 | AI có thể tốt hơn | Khi có người đổi ý món hoặc thêm trễ, không có cách nào cập nhật đơn một cách thông minh | Người order, quán | Phải nhắn lại riêng với quán, dễ gây sai sót |
 
 ---
 
-## Problem Card #1 — Tổng hợp đơn hàng từ chat rải rác
+## Top 3
+
+| Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
+|---|---|---|---|
+| 1 | Tổng hợp order + tính tiền (#1, #5, #7) | Workflow rõ nhất, mất thời gian lớn nhất (20-30 phút/ngày), nhiều người đau | Liệu AI có thể hiểu các món free text không? |
+| 2 | So sánh giá/món giữa các app (#2) | Tốn thời gian cá nhân, có thể giải quyết bằng AI tổng hợp | Dữ liệu từ các app khó lấy tự động, scope lớn |
+| 3 | Xác nhận đơn với quán (#6, #10) | Có pain thật (giao thiếu, sai món), AI giúp chuẩn hóa tin nhắn | Phụ thuộc vào quán bên ngoài |
+
+---
+
+## Problem Card #1 — Tổng hợp order trưa
 
 **Problem 1 câu:**  
-Mỗi ngày, người phụ trách (HR/Admin) mất 30-45 phút để lướt ngược group chat, tổng hợp các yêu cầu đặt món (text, ảnh, nút bấm) vào Excel, dễ bị sót hoặc nhầm đơn.
+Mỗi ngày, người chịu trách nhiệm order (luân phiên) mất khoảng 20-30 phút để hỏi team, tổng hợp món, tính tiền và chia bill, gây trễ giờ ăn và ức chế.
 
 **Actor:**  
-HR/Admin (hoặc người luân phiên order).
+Thành viên trong team (5-7 người) đến lượt order. Không có role cố định.
 
 **Thời điểm / bối cảnh:**  
-Khung 10h30 – 11h30 hàng ngày, khi nhân viên gửi đơn rải rác.
+Khoảng 11h-11h30 hàng ngày, trước giờ ăn trưa.
 
 **Current workflow:**
 
 ```text
-1. HR gửi menu (ảnh/link) vào group chat lúc 10h00
-2. Nhân viên reply bằng nhiều dạng: "cơm sườn", "em ơi cho chị gà rán", bấm nút (nếu có), gửi ảnh món...
-3. HR liên tục mở chat, đọc từng tin, copy tên món + tên người vào Excel (30-45 phút tích tụ)
-4. Đến 11h30, HR phải dò lại xem ai chưa đặt, lại nhắn hỏi
-5. Sau khi chốt, HR gõ lại danh sách từ Excel sang app đặt đồ (Grab/Zalo)
+1. Hỏi trong group chat "hôm nay ăn gì? ai order chung?"
+2. Chờ mọi người đề xuất món/quán (5-10 phút)
+3. Tổng hợp các món (người A: cơm tấm, B: bún bò, C: trà đào...)
+4. Gửi danh sách cho quán (qua Zalo/Grab)
+5. Khi đồ đến, tính tiền từng người (giá món + chia ship)
+6. Thông báo số tiền và chờ chuyển khoản
+7. Đối chiếu ai chưa chuyển (có khi nhắc lại sau)
 ```
 
 **Bottleneck:**  
-Bước 3 – đọc và nhập thủ công từ chat đa dạng format. Không có cấu trúc thống nhất.
+Bước 3 (tổng hợp món) và bước 5 (tính tiền) mất nhiều thời gian vì nhập tay, dễ nhầm.
 
 **Impact:**  
-30-45 phút/ngày × 5 ngày = 150-225 phút/tuần. Dễ sót đơn (5-10% sai sót), nhân viên phàn nàn.
+20-30 phút/ngày × 5 ngày = 100-150 phút/tuần cho người order. Cả team ăn trễ, căng thẳng nhẹ.
 
 **Success metric:**  
-Giảm thời gian tổng hợp xuống dưới 5 phút/ngày, tỷ lệ sót đơn = 0%.
+Giảm thời gian từ khi bắt đầu hỏi đến khi gửi order xong xuống dưới 10 phút. Giảm số lần hỏi lại "bạn ăn gì?" xuống 0.
 
 **Non-AI alternative:**  
-Dùng Google Form hoặc Typeform để thu thập đơn. Nhưng nhân viên ngại mở link, tỷ lệ phản hồi thấp hơn chat.
+Google Form hoặc bảng tính shared. Nhưng mọi người ngại mở link, vẫn thích nhắn chat.
 
 **AI hypothesis:**  
-AI đọc tin nhắn tự do (text, emoji, viết tắt), trích xuất (người, món, số lượng, yêu cầu đặc biệt), tự động tổng hợp thành bảng.
+AI đọc tin nhắn (hoặc form nhập tự do), trích xuất tên người + món + số lượng, tự động tính tiền dựa trên giá đã biết hoặc tra nhanh.
 
 **Quick gut:**  
 Workflow.
@@ -57,204 +73,169 @@ Workflow.
 ### Draft current workflow
 
 ```text
-CURRENT STATE — 40 phút
+CURRENT STATE — 25 phút (trung bình)
 
-[1 Gửi menu: 2']
-→ [2 Nhân viên reply rải rác: 20'] (không phải effort của HR, nhưng kéo dài)
-→ [3 HR lội chat + nhập Excel: 25']  <-- bottleneck
-→ [4 HR hỏi người chưa đặt: 5']
-→ [5 HR nhập lại lên app đặt món: 8']
+[1 Hỏi team: 2']
+→ [2 Chờ đề xuất: 10']  <-- chờ người chậm
+→ [3 Tổng hợp món (gõ tay): 5']
+→ [4 Gửi quán: 2']
+→ [5 Tính tiền + chia ship: 5']
+→ [6 Thông báo + thu tiền: 1']
+→ (Có khi bước 7 nhắc nợ: +2')
 ```
 
 ### Draft future workflow
 
 ```text
-FUTURE STATE — 8 phút
+FUTURE STATE — 10 phút
 
-[1 Bot tự gửi menu dạng interactive: 0']
-→ [2 Nhân viên chọn món (nút bấm hoặc nhắn tự do): 5']
-→ [3 AI parse + tổng hợp real-time: 0']
-→ [4 AI tự nhắc người chưa đặt: 0']
-→ [5 HR kiểm tra bảng tổng hợp (1 click): 2']
-→ [6 HR copy danh sách đã format vào app đặt hàng: 1']
+[1 AI hỏi tự động (hoặc form): 0']  -- thay thế bước chờ
+[2 Mọi người reply món (free text): 5']  <-- vẫn chờ người
+[3 AI parse và tổng hợp món: 1']
+[4 AI tính tiền + ship: 1']
+[5 Người order kiểm tra và gửi quán: 3']  <-- human boundary
 
-Fallback: AI parse sai 1-2 món → HR sửa trực tiếp trên bảng.
+Fallback: AI parse sai → người sửa thủ công.
 ```
 
 ---
 
-## Problem Card #2 — Xử lý đổi món / thêm món phút chót
+## Problem Card #2 — So sánh giá giữa các app
 
 **Problem 1 câu:**  
-Nhân viên thường xuyên đổi ý, thêm món hoặc hủy món sau khi đã gửi đơn, khiến HR phải cập nhật thủ công nhiều lần, dễ rối loạn dữ liệu.
+Mỗi lần order, người order mất 5-10 phút mở đi mở lại 3-4 app giao đồ ăn để so sánh giá và khuyến mãi cho cùng một món/quán.
 
 **Actor:**  
-HR/Admin + nhân viên.
+Người order bất kỳ.
+
+**Current workflow tóm tắt:**  
+Mở Grab → gõ tên món → xem giá → chụp màn hình → mở ShopeeFood → gõ lại → so sánh → quyết định.
+
+**Bottleneck:**  
+Phải nhập lại tên món nhiều lần, không có view tổng hợp.
+
+**Success metric:**  
+Giảm từ 5-10 phút xuống dưới 1 phút cho mỗi lần so sánh.
+
+**Quick gut:**  
+Agent (cần crawl dữ liệu) hoặc Workflow phức tạp.
+
+---
+
+## Problem Card #3 — Xác nhận đơn với quán
+
+**Problem 1 câu:**  
+Sau khi gửi đơn qua Zalo/messenger, người order thường phải gọi điện hoặc nhắn lại để xác nhận, mất 5 phút và dễ sai sót.
+
+**Actor:**  
+Người order.
+
+**Current workflow tóm tắt:**  
+Soạn tin nhắn danh sách món → gửi → chờ 2-3 phút → nếu không reply thì gọi → đọc lại danh sách.
+
+**Bottleneck:**  
+Không có cơ chế xác nhận tự động; quán bận không rep kịp.
+
+**Success metric:**  
+Giảm thời gian xác nhận xuống dưới 30 giây, không cần gọi điện.
+
+**Quick gut:**  
+Workflow (tạo template tin nhắn có cấu trúc + tự động nhắc nếu không phản hồi).
+
+---
+Dưới đây là 2 problem card bổ sung (#4 và #5) từ danh sách scan ban đầu, để bạn có thêm lựa chọn khi nhóm hội tụ.
+
+---
+
+## Problem Card #4 — Dự trù giờ order bị sai
+
+**Problem 1 câu:**  
+Người order thường xuyên tính sai thời gian giao hàng (sớm quá hoặc trễ quá) so với 12h trưa, làm đồ nguội hoặc cả team phải chờ, gây lãng phí thời gian và ảnh hưởng tinh thần.
+
+**Actor:**  
+Người order (luân phiên).
 
 **Thời điểm / bối cảnh:**  
-Từ lúc nhân viên gửi đơn đầu tiên đến trước khi chốt (thường 11h30).
+Trước khi gửi order (khoảng 11h), phải ước lượng: quán nấu bao lâu, shipper lấy và di chuyển bao lâu.
 
 **Current workflow:**
 
 ```text
-1. Nhân viên A gửi "cơm tấm" lúc 10h15
-2. 10h45, A nhắn "đổi sang bún bò giúp em"
-3. HR phải tìm dòng của A trong Excel, sửa thủ công
-4. Nếu A hủy luôn, HR xóa dòng
-5. Nhiều người đổi cùng lúc → Excel loạn, HR dễ bấm nhầm
+1. Nhớ lại kinh nghiệm lần trước (nếu quán quen)
+2. Hoặc đoán: "chắc 30 phút"
+3. Quyết định gửi order lúc 11h15 nếu đoán 45 phút giao
+4. Thực tế: hôm thì 11h45 đã có (đồ nguội), hôm thì 12h15 mới có (cả team đói)
 ```
 
 **Bottleneck:**  
-Việc cập nhật thủ công không theo kịp tốc độ thay đổi, đặc biệt khi group lớn (>10 người).
+Không có dữ liệu thực tế về thời gian giao hàng theo quán, theo khung giờ, theo app. Phụ thuộc vào cảm tính.
 
 **Impact:**  
-Mỗi lần đổi mất 2-3 phút, mỗi ngày 3-5 lần → 6-15 phút. Tỷ lệ sai sót tăng lên 10-15%.
+Trung bình mỗi tuần 2-3 bữa bị lệch hơn 15 phút so với mong muốn. Mỗi lần cả team mất khoảng 5-10 phút chờ hoặc than phiền.
 
 **Success metric:**  
-HR không cần can thiệp khi nhân viên đổi món; hệ thống tự cập nhật.
+Giảm tỷ lệ bữa ăn bị trễ >15 phút từ ~40% xuống dưới 10%. Hoặc giảm thời gian chờ trung bình từ 12 phút xuống 5 phút.
 
 **Non-AI alternative:**  
-Dùng bảng tính shared (Google Sheets) để nhân viên tự sửa. Nhưng họ sợ phá hỏng công thức hoặc xóa nhầm.
+Ghi chép thủ công thời gian giao của từng quán vào bảng, tính trung bình. Nhưng không ai làm vì lười và mỗi lần điều kiện khác nhau.
 
 **AI hypothesis:**  
-AI hiểu yêu cầu "đổi món", "thêm", "hủy" từ tin nhắn, tự động cập nhật đơn hàng tương ứng với đúng người.
+AI học từ lịch sử order (ngày, giờ, quán, app) để dự đoán thời gian giao tối ưu, gợi ý thời điểm nên gửi order. Hoặc tích hợp API thời gian thực từ app (nếu có).
 
 **Quick gut:**  
-Workflow (mở rộng từ problem #1).
+Workflow + Rule (thống kê đơn giản) có thể đủ nếu có dữ liệu. AI chỉ cần nếu muốn dự đoán theo nhiều biến số.
 
 ---
 
-## Problem Card #3 — Chia tiền, thu tiền và đối chiếu
+## Problem Card #5 — Order trễ gây ức chế và rủi ro social
 
 **Problem 1 câu:**  
-Sau khi nhận đồ, HR mất 15-20 phút để tính tiền ship, áp giảm giá, chia tiền lẻ cho từng người, sau đó nhắn báo và đối chiếu chuyển khoản thủ công, dễ sai và thất thoát.
+Khi order bị trễ (do tính sai giờ, quán chậm, shipper lạc), người order phải chịu áp lực từ team (càm ràm, hỏi "sắp có chưa") trong khi không thể làm gì nhanh hơn.
 
 **Actor:**  
-HR/Admin.
+Người order (đặc biệt là người mới hoặc người ít nói).
 
 **Thời điểm / bối cảnh:**  
-Sau khi đồ ăn được giao (khoảng 12h-12h30).
+Từ lúc dự kiến có đồ (12h) đến khi đồ thực sự đến (12h15-12h30).
 
 **Current workflow:**
 
 ```text
-1. HR nhận hóa đơn tổng (có ship, giảm giá)
-2. HR tính tổng tiền mỗi người: (giá món + (ship/số người) - giảm giá)
-3. HR gửi bảng số tiền + QR code vào group (hoặc nhắn riêng)
-4. Nhân viên chuyển khoản, ghi nội dung (hoặc không)
-5. HR mở app ngân hàng, kiểm tra từng giao dịch, đối chiếu với danh sách
-6. Nếu ai chưa chuyển, HR nhắc lại (có thể nhiều lần)
+1. Nhận câu hỏi "đến đâu rồi?" từ 2-3 người
+2. Mở app check tình trạng shipper
+3. Trả lời "sắp rồi" (dù không biết chính xác)
+4. Lặp lại mỗi 5 phút
+5. Cảm thấy có lỗi dù không phải lỗi của mình
 ```
 
 **Bottleneck:**  
-Bước 2 (tính toán thủ công) và bước 5 (đối chiếu chuyển khoản) tốn nhiều thời gian, dễ nhầm số lẻ.
+Không có cơ chế cập nhật trạng thái tự động cho cả team. Người order trở thành "màn hình hiển thị" thủ công.
 
 **Impact:**  
-15-20 phút/ngày, thất thoát trung bình 2-3% do tính sai hoặc người quên trả.
+Stress tinh thần cho người order, ảnh hưởng đến không khí team (cáu gắt nhẹ). Có thể dẫn đến việc người từ chối order khi đến lượt.
 
 **Success metric:**  
-HR chỉ mất 1 phút để xác nhận; tiền được tự động đối chiếu; không còn nợ quá hạn.
+Giảm số câu hỏi "đến đâu rồi?" xuống gần 0. Người order không còn cảm thấy áp lực.
 
 **Non-AI alternative:**  
-Dùng app tách bill (Splitwise) nhưng nhân viên phải cài thêm app, không tích hợp sẵn với chat.
+Share link theo dõi đơn hàng từ Grab/ShopeeFood vào group chat. Nhưng mỗi lần phải copy link, và có người không biết xem.
 
 **AI hypothesis:**  
-AI đọc hóa đơn (ảnh chụp), tự tính tiền cho từng người dựa trên đơn hàng đã ghi nhận, tự động gửi QR động kèm số tiền chính xác, kết nối webhook ngân hàng để tự gạch nợ.
+AI tự động lấy trạng thái từ app (nếu có API) hoặc từ ảnh chụp màn hình của người order, sau đó broadcast vào group chat mỗi khi có thay đổi (đã lấy hàng, đang giao, cách 5 phút). Hoặc AI trả lời tự động các câu hỏi "đến đâu rồi?" bằng cách tổng hợp thông tin.
 
 **Quick gut:**  
-Workflow + Agent nhẹ (tích hợp API thanh toán).
+Workflow (tự động share link) + Rule (nhắc người order làm vài thao tác đơn giản). AI không thực sự cần nếu các app đã có tracking.
 
 ---
 
-## Problem Card #4 — Nhắc nhở người quên đặt / quên trả tiền
-
-**Problem 1 câu:**  
-HR phải thủ công nhắn tin nhắc nhở từng người chưa đặt món trước giờ chốt, và nhắc những người chưa thanh toán sau bữa ăn, gây mất thời gian và tạo cảm giác khó chịu.
-
-**Actor:**  
-HR/Admin, nhân viên.
-
-**Thời điểm / bối cảnh:**  
-Lần 1: 10h45-11h15 (trước chốt), lần 2: 13h-14h (sau ăn).
-
-**Current workflow:**
-
-```text
-1. HR nhìn danh sách đã đặt, xác định ai chưa thấy tên
-2. HR @từng người hoặc nhắn riêng: "bạn đặt món chưa?"
-3. Mỗi lần nhắc tốn 1-2 phút x 3-5 người = 5-10 phút
-4. Sau ăn, HR soát lại ai chưa chuyển khoản, lại nhắn riêng từng người
-5. Có người nhắc 2-3 lần mới trả, HR phải theo dõi nhiều ngày
-```
-
-**Bottleneck:**  
-HR làm việc thủ công, dễ bỏ sót ai đó, và việc nhắc nhở có thể gây căng thẳng giao tiếp.
-
-**Impact:**  
-Mỗi ngày 10-15 phút cho việc nhắc, plus rủi ro ức chế tinh thần.
-
-**Success metric:**  
-HR không cần nhắc thủ công; hệ thống tự nhắc thông minh (vui vẻ, không làm phiền quá mức).
-
-**Non-AI alternative:**  
-Lên lịch nhắc cố định (VD: 11h bot gửi "Ai chưa đặt ơi") nhưng dễ bị lờ, không phân biệt được ai thực sự chưa đặt.
-
-**AI hypothesis:**  
-AI biết danh sách đã đặt, tự động nhắn riêng (DM) cho người chưa đặt/chưa thanh toán với văn phong đa dạng, có thể tag trực tiếp, và không làm phiền người đã hoàn thành.
-
-**Quick gut:**  
-Workflow (rule-based reminder + chút AI để cá nhân hóa nội dung).
-
----
-
-## Problem Card #5 — Nhập menu từ ảnh / link quán mới
-
-**Problem 1 câu:**  
-Khi muốn đổi quán, HR mất 10-15 phút để gõ lại toàn bộ tên món và giá từ ảnh chụp menu hoặc từ link web vào hệ thống chat hoặc bảng tính.
-
-**Actor:**  
-HR/Admin.
-
-**Thời điểm / bối cảnh:**  
-Khi cần thay đổi nhà cung cấp (khoảng 1-2 lần/tuần).
-
-**Current workflow:**
-
-```text
-1. HR tìm quán mới trên Grab/ShopeeFood/Zalo
-2. Chụp ảnh menu hoặc copy link
-3. HR gõ tay từng món và giá vào Excel hoặc vào tin nhắn group
-4. Kiểm tra lại cho khớp, có khi gõ sai giá
-```
-
-**Bottleneck:**  
-Nhập tay hoàn toàn, dễ sai và mất thời gian.
-
-**Impact:**  
-Mỗi lần đổi quán mất 10-15 phút, nếu đổi 2 lần/tuần → 20-30 phút.
-
-**Success metric:**  
-HR chỉ cần gửi ảnh hoặc link, menu tự được trích xuất và hiển thị dạng chọn món trong vòng 30 giây.
-
-**Non-AI alternative:**  
-Yêu cầu quán gửi file Excel, nhưng quán nhỏ thường không có.
-
-**AI hypothesis:**  
-AI OCR đọc ảnh menu (hoặc crawl link web), tự động nhận diện tên món, giá, nhóm món (món chính, đồ uống, topping) và tạo giao diện tương tác.
-
-**Quick gut:**  
-Workflow + AI (Computer Vision / OCR).
-
----
-
-## Tổng hợp 5 Problem Cards
+## Tóm tắt các Problem Cards (1-5)
 
 | Card | Problem chính | Bottleneck chính | Success metric | Quick gut |
 |---|---|---|---|---|
-| #1 | Tổng hợp đơn từ chat rải rác | Nhập tay từ nhiều format | 40' → <8', 0% sót | Workflow (AI parse) |
-| #2 | Đổi món / thêm môn phút chót | Cập nhật thủ công liên tục | HR không cần can thiệp | Workflow mở rộng |
-| #3 | Chia tiền, thu tiền, đối chiếu | Tính toán + check ngân hàng | 20' → 1', tự động | Workflow + Agent |
-| #4 | Nhắc nhở quên đặt/quên trả | HR phải @từng người | 0 lần HR nhắc | Workflow (rule + AI nội dung) |
-| #5 | Nhập menu từ ảnh/link | Gõ tay tên món, giá | 15' → 30 giây | Workflow + OCR |
+| #1 | Tổng hợp món + tính tiền | Gom món thủ công, chia tiền mất thời gian | 25 phút → 10 phút | Workflow (AI parse free text) |
+| #2 | So sánh giá giữa các app | Phải mở nhiều app, gõ lại tên món | 5-10 phút → <1 phút | Agent (cần crawl) |
+| #3 | Xác nhận đơn với quán | Chờ reply, phải gọi điện | 5 phút → 30 giây | Workflow (template + auto-retry) |
+| #4 | Dự trù giờ order sai | Không có dữ liệu thời gian thực | Lệch >15′ từ 40% → 10% | Rule (thống kê) + Workflow |
+| #5 | Áp lực hỏi "đến đâu rồi?" | Người order là cầu nối thủ công | Số câu hỏi → 0 | Workflow (share link) |
 
 ---
