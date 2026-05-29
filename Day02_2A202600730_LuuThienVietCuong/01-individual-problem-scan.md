@@ -214,3 +214,4 @@ Câu hỏi tôi muốn nhóm challenge:
 ```text
 Liệu problem này có nên giải bằng AI ở mức workflow hỗ trợ hay chỉ cần một template note thật chặt là đủ? Nếu chỉ dùng AI để tóm tắt, làm sao tránh mất các limitation hoặc giả định quan trọng của paper?
 ```
+########
