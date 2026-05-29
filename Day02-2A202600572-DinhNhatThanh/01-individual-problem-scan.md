@@ -2,7 +2,7 @@
 
 ## Scan rộng
 
-Tôi scan 10 problems từ trải nghiệm thực tế trong công tác giảng dạy và quản lý học thuật của Giảng viên đại học, đa dạng lăng kính.
+Tôi scan 15 problems từ trải nghiệm thực tế trong công tác giảng dạy và quản lý học thuật của Giảng viên đại học, đa dạng lăng kính.
 
 | # | Lăng kính | Problem quan sát được | Ai đang đau? | Dấu hiệu thật |
 |---|---|---|---|---|
@@ -16,16 +16,23 @@ Tôi scan 10 problems từ trải nghiệm thực tế trong công tác giảng 
 | 8 | AI có thể tốt hơn | Đối chiếu báo cáo đạo văn Turnitin để lọc ra các trích dẫn đúng chuẩn thay vì quy kết đạo văn | Giảng viên | Mất 20 phút/báo cáo |
 | 9 | Lặp lại | Soạn và gửi các thông báo nhắc nộp bài, lịch học bù, nghỉ học qua email và Portal | Giảng viên | Mất 10-15 phút/lần thông báo |
 | 10| AI có thể tốt hơn | Phân chia nhóm sinh viên làm bài tập lớn dựa trên khảo sát trình độ và đăng ký đề tài rời rạc | Giảng viên | Mất 60 phút/lớp đông |
+| 11| Tốn thời gian / AI tốt hơn | Soạn bộ Rubrics đánh giá chi tiết (Analytical Rubrics) cho tiểu luận/đồ án phù hợp chuẩn Bloom | Giảng viên, trưởng bộ môn | Mất 120-180 phút/rubric mới, SV thắc mắc nhiều |
+| 12| Tốn thời gian / Pain người khác | Chấm điểm tiểu luận tự luận chuyên ngành và soạn phản hồi cá nhân hóa chi tiết cho hàng trăm SV | Giảng viên | Mất 10-15 phút/bài, tổng cộng 10-15 tiếng/đợt thi |
+| 13| Lặp lại + Tốn thời gian | Sắp xếp lịch tư vấn học thuật cá nhân (Office Hours) và trao đổi chốt lịch qua lại với SV | Giảng viên cố vấn học tập | Gửi 3-4 email/SV chỉ để chốt lịch, mất 60 phút/tuần |
+| 14| AI có thể tốt hơn / Tốn thời gian | Đọc hiểu và phân tích thủ công hàng trăm phản hồi định tính của SV cuối kỳ để viết báo cáo cải tiến dạy học | Giảng viên, Ban chủ nhiệm | Đọc 100-200 feedback mất 90-120 phút/môn, dễ bị bias |
+| 15| Lặp lại / Tốn thời gian | Kiểm tra thủ công định dạng tài liệu tham khảo (References Style: APA/Harvard) trong bài làm sinh viên | Giảng viên, trợ giảng | Mất 5 phút/bài, lớp 50 SV mất hơn 4 tiếng/học kỳ |
 
 ---
 
-## Top 3
+## Top 5
 
 | Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
 |---|---|---|---|
 | 1 | Tạo câu hỏi trắc nghiệm (MCQ) (#1) | Quy trình các bước rất rõ ràng, là việc lặp đi lặp lại hàng tuần, tốn nhiều thời gian và công sức sáng tạo đáp án nhiễu (distractors). Có metric đo lường rõ rệt. | Làm sao đo lường độ khó và đảm bảo AI không sinh ra kiến thức sai lệch (hallucination). |
 | 2 | Soạn báo cáo đánh giá chuẩn đầu ra (CLO) (#3) | Quy trình nghiệp vụ bắt buộc trong kiểm định chất lượng đào tạo (AUN-QA/ABET), đòi hỏi kết hợp số liệu thống kê cứng và phân tích nguyên nhân, kế hoạch cải tiến định tính. | Cách thu thập dữ liệu điểm chi tiết theo từng câu hỏi từ LMS của trường một cách tự động. |
 | 3 | Trả lời câu hỏi sinh viên lặp lại (#4) | Tần suất xuất hiện hàng ngày, gây đứt gãy công việc nghiên cứu và chuẩn bị bài giảng của giảng viên. | Cách tích hợp an toàn vào các kênh chat của trường và kiểm soát bảo mật thông tin sinh viên. |
+| 4 | Chấm bài tự luận và viết feedback cá nhân hóa (#12) | Tiêu tốn thời gian khổng lồ (10-15 tiếng/lớp), SV cực kỳ cần feedback chi tiết để học hỏi. AI có ưu thế lớn trong việc soạn gợi ý nhận xét học thuật theo rubrics có sẵn để GV tinh chỉnh. | Rủi ro thiên kiến chấm điểm của AI (grading bias) và sự chấp nhận của SV đối với feedback có AI hỗ trợ. |
+| 5 | Tổng hợp & phân tích qualitative feedback của SV cuối kỳ (#14) | Đọc hiểu hàng trăm ý kiến định tính của SV rất tốn thời gian, dễ bỏ sót hoặc bị thiên lệch cảm xúc (bias). AI vượt trội trong việc phân tích sắc thái sentiment và gom nhóm ý kiến đóng góp. | Làm sao đảm bảo dữ liệu feedback được bảo mật tuyệt đối và AI không bỏ sót những góp ý cực kỳ chi tiết nhưng có ích. |
 
 ---
 
@@ -144,3 +151,117 @@ Giảm thời gian phản hồi câu hỏi lặp lại xuống dưới 2 phút m
 
 **Quick gut:**  
 Workflow.
+
+---
+
+## Problem Card #4 — Chấm bài tự luận và viết feedback cá nhân hóa cho Sinh Viên (#12)
+
+**Problem 1 câu:**  
+Mỗi đợt thi tự luận, giảng viên mất từ 10-15 tiếng để chấm điểm và viết phản hồi học thuật cá nhân hóa chi tiết dựa trên rubrics cho 60 sinh viên, dẫn đến tình trạng chậm trễ công bố điểm hoặc phản hồi bị sơ sài, thiếu tính hướng dẫn.
+
+**Actor:**  
+Giảng viên đại học trực tiếp giảng dạy các môn lý thuyết/chuyên ngành có bài đánh giá tự luận (tiểu luận, bài phân tích case study).
+
+**Thời điểm / bối cảnh:**  
+Tuần thứ 8 (giữa kỳ) và cuối học kỳ (sau đợt thi cuối kỳ).
+
+**Current workflow:**
+1. Tải toàn bộ bài tự luận của sinh viên từ LMS (Moodle/Canvas) về máy.
+2. Đọc kỹ từng bài viết của sinh viên (mất 8-10 phút/bài).
+3. Đối chiếu bài viết với Rubrics đánh giá của môn học để chấm điểm thành phần.
+4. Gõ lời nhận xét học thuật chi tiết (điểm mạnh, điểm yếu, hướng khắc phục cụ thể) vào file hoặc LMS (mất 5 phút/bài).
+5. Cộng tổng điểm, nhập điểm thủ công lên portal điểm và đăng tải feedback lên LMS cho sinh viên xem.
+
+**Bottleneck:**  
+Bước 4 (gõ lời nhận xét cá nhân hóa chi tiết theo rubrics) là bottleneck lớn nhất, chiếm gần 50% thời gian và gây mệt mỏi tinh thần nghiêm trọng khi phải làm liên tục hàng chục bài.
+
+**Impact:**  
+Mất 10-15 tiếng/mỗi đợt chấm bài cho 1 lớp. Nếu dạy 3 lớp, giảng viên mất 30-45 tiếng chỉ để gõ feedback. Hệ quả là feedback bị trễ (sinh viên không kịp sửa sai cho bài tiếp theo) hoặc chất lượng nhận xét giảm dần về cuối do giảng viên bị kiệt sức (feedback chung chung, không giúp ích được cho học sinh).
+
+**Success metric:**  
+Giảm tổng thời gian chấm điểm và viết feedback từ 15 phút/bài xuống dưới 5 phút/bài; 100% sinh viên nhận được feedback chi tiết (ít nhất 3 câu nhận xét cụ thể tương ứng với các tiêu chí rubric).
+
+**Non-AI alternative:**  
+Chỉ chấm điểm số và không viết nhận xét định tính, hoặc dùng các câu nhận xét mẫu (canned feedback) có sẵn trong Excel rồi copy-paste. Phương án này làm giảm giá trị sư phạm của bài tự luận và khiến sinh viên cảm thấy không được quan tâm.
+
+**AI hypothesis:**  
+Giảng viên tải bài viết của sinh viên lên hệ thống; AI tự động phân tích bài viết dựa trên file Rubrics đính kèm, đề xuất bản nháp feedback chi tiết theo từng tiêu chí (đóng vai trò là trợ giảng ảo). Giảng viên đọc và duyệt/sửa đổi feedback này, đồng thời xác nhận điểm số cuối cùng (Human-in-the-loop). Hệ thống tự động đẩy điểm và feedback sạch lên LMS.
+
+**Quick gut:** Workflow
+
+### Minh họa Workflow trước/sau (ASCII)
+
+```text
+CURRENT STATE — 15 phút/bài viết (Tổng cộng 900 phút cho lớp 60 SV)
+
+[1 Đọc bài tự luận: 8']
+→ [2 Đối chiếu Rubrics chấm điểm: 2']
+→ [3 Gõ tay feedback cá nhân chi tiết: 4']   <-- Bottleneck chính (tiêu tốn thời gian sáng tạo văn bản)
+→ [4 Tính tổng & nhập điểm lên portal: 1']
+
+FUTURE STATE — 4 phút/bài viết (Tổng cộng 240 phút cho lớp 60 SV với Trợ giảng AI)
+
+[1 AI quét bài viết của SV & đối chiếu Rubrics: 1']  -- AI step (Tự động trích xuất ý chính & đối chiếu)
+→ [2 AI đề xuất bản nháp chấm điểm & 3 câu feedback chi tiết: 1']  -- AI step
+→ [3 Giảng viên xem, tinh chỉnh feedback và chốt điểm: 1.5']     <-- Core collaborative gate (GV làm chủ quyết định)
+→ [4 Hệ thống tự động đồng bộ điểm & feedback lên LMS: 0.5']     -- Rule/API step
+
+Fallback: Nếu AI phân tích lệch rubric hoặc bịa dẫn chứng -> Giảng viên click "Hủy bản nháp AI" và tự viết feedback thủ công dựa trên rubric.
+```
+
+---
+
+## Problem Card #5 — Tổng hợp & phân tích qualitative feedback của SV cuối kỳ (#14)
+
+**Problem 1 câu:**  
+Cuối mỗi học kỳ, giảng viên và ban chủ nhiệm khoa mất từ 90-120 phút cho mỗi môn học để đọc và phân tích thủ công hàng trăm phản hồi tự luận (qualitative feedback) rời rạc của sinh viên nhằm viết Báo cáo Cải tiến Giảng dạy, dẫn đến rủi ro bỏ sót các góp ý cốt lõi hoặc bị thiên lệch cảm xúc bởi một vài bình luận tiêu cực cực đoan.
+
+**Actor:**  
+Giảng viên phụ trách môn học và Trưởng bộ môn/Ban chủ nhiệm khoa quản lý chất lượng.
+
+**Thời điểm / bối cảnh:**  
+Cuối mỗi học kỳ, sau khi sinh viên hoàn thành kỳ khảo sát môn học.
+
+**Current workflow:**
+1. Xuất dữ liệu khảo sát môn học (dạng file Excel chứa hàng trăm câu feedback tự do) từ hệ thống Portal.
+2. Đọc thủ công từng dòng bình luận của sinh viên để hiểu tâm tư, nguyện vọng.
+3. Phân nhóm thủ công các ý kiến (về bài giảng, giảng viên, cơ sở vật chất, bài tập).
+4. Phân tích sắc thái (khen, chê, trung lập) và lọc ra các vấn đề cốt lõi được nhắc đến nhiều nhất.
+5. Viết báo cáo cải tiến giảng dạy định tính (chỉ ra giảng viên cần cải thiện gì, đổi phương pháp dạy thế nào trong học kỳ sau).
+
+**Bottleneck:**  
+Bước 3 và 4 (gom nhóm và phân tích sắc thái hàng trăm dòng text tiếng Anh/tiếng Việt lẫn lộn) cực kỳ tốn thời gian và gây mệt mỏi cho người đọc, đồng thời dễ bị ảnh hưởng bởi tâm lý phòng vệ (giảng viên chỉ tập trung vào các câu chê tiêu cực và bỏ qua các góp ý khách quan).
+
+**Impact:**  
+Mất 90-120 phút/môn. Với khoa quản lý 30 môn học, ban chủ nhiệm khoa mất 45-60 giờ mỗi học kỳ chỉ để tổng hợp. Do quá tải, các báo cáo cải tiến thường bị làm sơ sài, mang tính đối phó và không thực sự cải thiện được chất lượng dạy học ở kỳ sau.
+
+**Success metric:**  
+Giảm thời gian phân tích và lập báo cáo cải tiến từ 120 phút xuống dưới 15 phút mỗi môn; 100% các chủ đề phản hồi quan trọng được phân loại chính xác, giảm thiểu thiên lệch cảm xúc chủ quan của người đọc.
+
+**Non-AI alternative:**  
+Chỉ xem điểm đánh giá trung bình dạng số (quantitative score) và bỏ qua hoàn toàn phần nhận xét tự luận viết tay của sinh viên. Phương án này làm giảm giá trị sư phạm của bài tự luận và khiến sinh viên cảm thấy không được quan tâm.
+
+**AI hypothesis:**  
+AI đọc file Excel feedback định tính, tự động phân nhóm các ý kiến theo chủ đề sư phạm, phân tích sắc thái cảm xúc (sentiment analysis) của từng nhóm, và trích xuất ra top 3 điểm mạnh nổi bật cùng top 3 đề xuất cải tiến thiết thực nhất dưới dạng bản thảo báo cáo. Giảng viên và trưởng bộ môn chỉ việc duyệt báo cáo này và ký xác nhận kế hoạch hành động.
+
+**Quick gut:**  Workflow
+
+### Minh họa Workflow trước/sau (ASCII)
+
+```text
+CURRENT STATE — 120 phút/môn học (Đọc & phân loại thủ công)
+
+[1 Export Excel feedback định tính từ Portal: 5']
+→ [2 Đọc & phân nhóm thủ công từng dòng feedback: 60']  <-- Bottleneck chính (quá tải thông tin, dễ nản)
+→ [3 Tự đánh giá sắc thái & trích xuất pattern: 25']     <-- Bottleneck tâm lý (dễ bị bias bởi bình luận cực đoan)
+→ [4 Soạn Báo cáo Cải tiến Giảng dạy định tính: 30']
+
+FUTURE STATE — 15 phút/môn học (Phân tích thông minh với AI)
+
+[1 Upload file Excel feedback lên hệ thống: 1']
+→ [2 AI tự động phân nhóm chủ đề, phân tích sentiment & trích xuất pattern: 2'] -- AI step
+→ [3 AI tự động soạn bản thảo Báo cáo Cải tiến (kèm trích dẫn đối chứng): 2']    -- AI step
+→ [4 Giảng viên & Trưởng bộ môn review báo cáo, thêm nhận định thực tế & chốt: 10'] <-- Human gate (Giám sát & phê duyệt)
+
+Fallback: Nếu AI tổng hợp sai ngữ cảnh hoặc trích dẫn không khớp -> Hệ thống hiển thị song song bảng Excel gốc để người dùng đối chiếu nhanh và chỉnh sửa thủ công trực tiếp trên bản thảo.
+```
