@@ -67,6 +67,10 @@ AI hỗ trợ đọc slide bài giảng, tự động lọc khái niệm then ch
 **Quick gut:**  
 Workflow.
 
+### Minh họa Workflow trước/sau (SVG)
+
+![Quy trình soạn câu hỏi trắc nghiệm](01-individual-problem-scan-workflow-card-1.svg)
+
 ### Draft current workflow
 
 ```text
@@ -83,15 +87,18 @@ CURRENT STATE — 120 phút (cho 20 câu trắc nghiệm)
 ### Draft future workflow
 
 ```text
-FUTURE STATE — 25 phút (cho 20 câu trắc nghiệm)
+FUTURE STATE — 25 phút (cho 20 câu trắc nghiệm với Vòng lặp Re-Act)
 
 [1 Upload slide bài giảng lên hệ thống: 1']
-→ [2 AI trích xuất khái niệm & draft câu hỏi + đáp án nhiễu: 2']    -- AI workflow step
-→ [3 Giảng viên xem, chọn lọc & chỉnh sửa (Human-in-the-Loop): 18']  <-- human boundary
-→ [4 AI tự động định dạng chuẩn hóa Aiken/GIFT bằng code: 1']        -- Rule/script step
+→ [2 AI trích xuất khái niệm & draft câu hỏi + đáp án nhiễu ban đầu: 2']  -- AI step
+→ [3 Vòng lặp Re-Act (Giảng viên & AI thảo luận & tinh chỉnh đề): 15']    <-- core collaborative loop
+  │   - Giảng viên kiểm tra nháp và đưa ra feedback ("Đổi phương án nhiễu C", "Tăng độ khó Bloom").
+  │   - AI lập luận (Reason), tự động sửa đổi hành động (Act) để sinh bản nháp mới bám sát ý giảng viên.
+  │   - Lặp lại đến khi Giảng viên hoàn toàn thỏa mãn (Satisfaction Threshold Met).
+→ [4 AI tự động định dạng chuẩn hóa Aiken/GIFT bằng code: 1']             -- Rule/script step
 → [5 Giảng viên download file sạch & import trực tiếp lên LMS: 3']
 
-Fallback: AI sinh đáp án bịa đặt/sai kiến thức -> Giảng viên từ chối nháp và quay lại viết thủ công dựa trên template Word có sẵn.
+Fallback: Nếu sau 3 vòng lặp Re-Act thảo luận AI vẫn không đáp ứng hoặc liên tục bịa kiến thức -> Giảng viên dừng chatbot và soạn thủ công bằng template Word.
 ```
 
 ---
