@@ -8,7 +8,7 @@ Tôi scan 10 problems từ trải nghiệm thực tế trong công tác giảng 
 |---|---|---|---|---|
 | 1 | Lặp lại + Tốn thời gian | Thiết kế và soạn bộ câu hỏi trắc nghiệm (MCQ) từ slide bài giảng định kỳ | Giảng viên, trợ giảng | Mất 120-180 phút/tuần cho mỗi bộ quiz |
 | 2 | Lặp lại | Copy/paste điểm thi và format bảng điểm từ các file Excel vào hệ thống Portal của trường | Giảng viên | Lặp lại mỗi đợt thi, mất 30 phút/lớp |
-| 3 | Tốn thời gian | Chấm bài tập lớn/đồ án dài của sinh viên và viết nhận xét chi tiết theo tiêu chí chấm (rubric) | Giảng viên | Mất 45 phút/nhóm báo cáo |
+| 3 | Tốn thời gian | Soạn Báo cáo Đánh giá Chuẩn đầu ra môn học (CLO Assessment Report) cuối kỳ cho từng lớp | Giảng viên | Mất 120-180 phút/môn học vào cuối kỳ |
 | 4 | Pain từ người khác | Trả lời các câu hỏi lặp đi lặp lại của sinh viên về quy chế, deadline, đề cương trên Zalo/Teams | Giảng viên, Sinh viên | Xuất hiện hàng ngày, trôi tin nhắn |
 | 5 | Tốn thời gian | Viết phần tổng quan nghiên cứu (Literature Review) cho bài báo khoa học bằng cách tổng hợp hàng chục bài nghiên cứu tiếng Anh | Giảng viên nghiên cứu | Mất 2-3 tuần cho một bản nháp |
 | 6 | Tốn thời gian | Soạn slide bài giảng mới từ sách giáo trình dày hơn 500 trang | Giảng viên | Mất 120-180 phút/chương |
@@ -24,7 +24,7 @@ Tôi scan 10 problems từ trải nghiệm thực tế trong công tác giảng 
 | Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
 |---|---|---|---|
 | 1 | Tạo câu hỏi trắc nghiệm (MCQ) (#1) | Quy trình các bước rất rõ ràng, là việc lặp đi lặp lại hàng tuần, tốn nhiều thời gian và công sức sáng tạo đáp án nhiễu (distractors). Có metric đo lường rõ rệt. | Làm sao đo lường độ khó và đảm bảo AI không sinh ra kiến thức sai lệch (hallucination). |
-| 2 | Chấm bài luận/đồ án lớn (#3) | Là nỗi đau lớn nhất cuối mỗi học kỳ, tốn cực kỳ nhiều năng lượng để đọc hiểu và viết nhận xét khách quan. | Tính công bằng và cá nhân hóa của nhận xét do AI hỗ trợ nháp. |
+| 2 | Soạn báo cáo đánh giá chuẩn đầu ra (CLO) (#3) | Quy trình nghiệp vụ bắt buộc trong kiểm định chất lượng đào tạo (AUN-QA/ABET), đòi hỏi kết hợp số liệu thống kê cứng và phân tích nguyên nhân, kế hoạch cải tiến định tính. | Cách thu thập dữ liệu điểm chi tiết theo từng câu hỏi từ LMS của trường một cách tự động. |
 | 3 | Trả lời câu hỏi sinh viên lặp lại (#4) | Tần suất xuất hiện hàng ngày, gây đứt gãy công việc nghiên cứu và chuẩn bị bài giảng của giảng viên. | Cách tích hợp an toàn vào các kênh chat của trường và kiểm soát bảo mật thông tin sinh viên. |
 
 ---
@@ -96,22 +96,22 @@ Fallback: AI sinh đáp án bịa đặt/sai kiến thức -> Giảng viên từ
 
 ---
 
-## Problem Card #2 — Chấm bài tập lớn/đồ án
+## Problem Card #2 — Soạn Báo cáo Đánh giá Chuẩn đầu ra môn học (CLO Assessment Report)
 
 **Problem 1 câu:**  
-Mỗi cuối học kỳ, giảng viên tốn khoảng 45 phút cho mỗi nhóm đồ án để đọc hiểu báo cáo dài 15-20 trang và viết nhận xét chi tiết, công bằng dựa trên rubric, gây kiệt sức và quá tải.
+Cuối mỗi học kỳ, giảng viên mất từ 120-180 phút để lập Báo cáo Đánh giá Chuẩn đầu ra (CLO Assessment Report) cho từng lớp học, bao gồm việc tổng hợp điểm thi theo chuẩn đầu ra và viết nhận định nguyên nhân cùng kế hoạch cải tiến chi tiết.
 
 **Actor:**  
-Giảng viên đại học trực tiếp chấm bài tập lớn/đồ án môn học.
+Giảng viên đại học trực tiếp giảng dạy môn học (cần nộp báo cáo cho ban Đảm bảo chất lượng).
 
 **Current workflow tóm tắt:**  
-Đọc báo cáo đồ án của nhóm (15-20 trang) → Đối chiếu từng tiêu chí trong rubric → Ghi điểm cho từng tiêu chí → Viết đoạn nhận xét chi tiết về ưu/nhược điểm và hướng cải thiện cho từng nhóm → Nhập điểm vào bảng tổng hợp.
+Thu thập bảng điểm thi của sinh viên → Phân rã điểm thi theo cấu trúc câu hỏi ứng với chuẩn đầu ra (CLO) tương ứng → Tính toán tỷ lệ đạt từng CLO bằng Excel → Viết báo cáo tự phân tích đánh giá (vì sao CLO nào thấp, đề xuất phương án cải tiến phương pháp dạy/học) → Nộp báo cáo.
 
 **Bottleneck:**  
-Đọc hiểu nhanh báo cáo dài và viết đoạn nhận xét cá nhân hóa chất lượng cao mà không bị lặp khuôn từ bài này sang bài khác.
+Viết phần tự nhận định nguyên nhân học thuật định tính và xây dựng kế hoạch hành động cải tiến cụ thể cho học kỳ sau mà không bị rập khuôn.
 
 **Success metric:**  
-Giảm thời gian chấm và nhận xét từ 45 phút xuống dưới 15 phút cho mỗi nhóm đồ án mà vẫn giữ nguyên chất lượng phản hồi hữu ích cho sinh viên.
+Giảm thời gian soạn báo cáo CLO từ 120 phút xuống dưới 20 phút mỗi môn học mà vẫn đảm bảo độ sâu sắc học thuật và tính thực tiễn của đề xuất cải tiến.
 
 **Quick gut:**  
 Workflow.
